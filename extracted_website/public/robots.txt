@@ -1,0 +1,22 @@
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://spidxrservices.co.uk/sitemap.xml
+
+# Crawl-delay for polite crawling
+Crawl-delay: 1
+
+# Block sensitive areas
+Disallow: /admin/
+Disallow: /api/
+Disallow: /*.json$
+Disallow: /*?*
+
+# Allow specific important pages
+Allow: /
+Allow: /about
+Allow: /services
+Allow: /contact
+Allow: /investors
+Allow: /targets/membership

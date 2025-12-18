@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="400" viewBox="0 0 600 400">
+  <defs>
+    <linearGradient id="plate" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" />
+      <stop offset="100%" stop-color="#F0F0F0" />
+    </linearGradient>
+    <radialGradient id="sauce" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+      <stop offset="0%" stop-color="#7D1A0F" />
+      <stop offset="100%" stop-color="#630D04" />
+    </radialGradient>
+    <linearGradient id="table" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4E3C2F" />
+      <stop offset="100%" stop-color="#2A1E17" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="600" height="400" fill="#1C1411" />
+  
+  <!-- Table -->
+  <rect x="0" y="300" width="600" height="100" fill="url(#table)" />
+  
+  <!-- Ambient light effect -->
+  <ellipse cx="300" cy="250" rx="300" ry="200" fill="#3D2B20" opacity="0.2" />
+  
+  <!-- Plate -->
+  <ellipse cx="300" cy="240" rx="150" ry="40" fill="url(#plate)" stroke="#CCC" stroke-width="2" />
+  
+  <!-- Main dish -->
+  <ellipse cx="300" cy="230" rx="120" ry="30" fill="url(#sauce)" />
+  
+  <!-- Steak -->
+  <path d="M260,210 C280,200 320,200 340,210 C350,215 350,225 340,230 C320,240 280,240 260,230 C250,225 250,215 260,210" fill="#913427" stroke="#682016" stroke-width="1" />
+  
+  <!-- Garnish 1 - asparagus -->
+  <g transform="translate(350, 210) rotate(30)">
+    <rect x="0" y="0" width="2" height="40" fill="#536E3D" />
+    <rect x="5" y="0" width="2" height="35" fill="#536E3D" />
+    <rect x="10" y="0" width="2" height="42" fill="#536E3D" />
+  </g>
+  
+  <!-- Garnish 2 - roasted vegetables -->
+  <ellipse cx="235" cy="220" rx="15" ry="8" fill="#E06735" />
+  <ellipse cx="250" cy="230" rx="10" ry="5" fill="#D49C48" />
+  
+  <!-- Sauce drizzle -->
+  <path d="M280,215 C290,210 310,210 320,215 S330,225 320,230" fill="none" stroke="#E9C296" stroke-width="1" />
+  
+  <!-- Plate details and highlights -->
+  <ellipse cx="300" cy="240" rx="140" ry="35" fill="none" stroke="#FFFFFF" stroke-width="0.5" opacity="0.5" />
+  
+  <!-- Wine glass -->
+  <path d="M450,200 L460,280 L470,280 L480,200 Z" fill="none" stroke="#CCCCCC" stroke-width="1" />
+  <path d="M455,200 L475,200 C485,180 445,180 455,200" fill="#9B2335" opacity="0.7" />
+  <ellipse cx="465" cy="280" rx="5" ry="1" fill="#CCCCCC" />
+  <rect x="463" y="280" width="4" height="15" fill="#CCCCCC" />
+  <ellipse cx="465" cy="295" rx="7" ry="1" fill="#CCCCCC" />
+  
+  <!-- Cutlery -->
+  <rect x="170" y="220" width="2" height="70" rx="1" fill="#D0D0D0" />
+  <path d="M170,220 C172,215 180,215 184,225 C180,230 170,230 170,220" fill="#D0D0D0" />
+  
+  <rect x="190" y="220" width="10" height="2" rx="1" fill="#D0D0D0" />
+  <rect x="190" y="220" width="2" height="70" rx="1" fill="#D0D0D0" />
+  <path d="M190,220 L200,220 L200,230 C196,235 194,235 190,230 Z" fill="#D0D0D0" />
+  
+  <!-- Ambient lighting -->
+  <ellipse cx="300" cy="200" rx="200" ry="100" fill="#FFFFFF" opacity="0.05" />
+  
+  <!-- Text label at bottom -->
+  <text x="300" y="380" text-anchor="middle" font-family="serif" font-size="14" fill="#C3B091" font-style="italic">SPIDXR Fine Dining Delivery</text>
+</svg>

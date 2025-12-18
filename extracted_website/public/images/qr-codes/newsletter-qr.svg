@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200">
+  <!-- QR Code Background -->
+  <rect width="200" height="200" fill="white"/>
+  
+  <!-- QR Code Pattern -->
+  <g fill="#000000">
+    <!-- Position Detection Patterns (Corners) -->
+    <!-- Top left corner -->
+    <rect x="10" y="10" width="30" height="30"/>
+    <rect x="20" y="20" width="10" height="10" fill="white"/>
+    
+    <!-- Top right corner -->
+    <rect x="160" y="10" width="30" height="30"/>
+    <rect x="170" y="20" width="10" height="10" fill="white"/>
+    
+    <!-- Bottom left corner -->
+    <rect x="10" y="160" width="30" height="30"/>
+    <rect x="20" y="170" width="10" height="10" fill="white"/>
+    
+    <!-- Main QR Code Pattern - Different pattern for Newsletter -->
+    <rect x="60" y="10" width="10" height="10"/>
+    <rect x="90" y="10" width="10" height="10"/>
+    <rect x="110" y="10" width="10" height="10"/>
+    <rect x="130" y="10" width="10" height="10"/>
+    
+    <rect x="10" y="60" width="10" height="10"/>
+    <rect x="40" y="60" width="10" height="10"/>
+    <rect x="70" y="60" width="10" height="10"/>
+    <rect x="90" y="60" width="10" height="10"/>
+    <rect x="120" y="60" width="10" height="10"/>
+    <rect x="140" y="60" width="10" height="10"/>
+    <rect x="160" y="60" width="10" height="10"/>
+    
+    <rect x="20" y="70" width="10" height="10"/>
+    <rect x="50" y="70" width="10" height="10"/>
+    <rect x="70" y="70" width="10" height="10"/>
+    <rect x="110" y="70" width="10" height="10"/>
+    <rect x="130" y="70" width="10" height="10"/>
+    <rect x="170" y="70" width="10" height="10"/>
+    
+    <rect x="10" y="80" width="10" height="10"/>
+    <rect x="30" y="80" width="10" height="10"/>
+    <rect x="50" y="80" width="10" height="10"/>
+    <rect x="70" y="80" width="10" height="10"/>
+    <rect x="90" y="80" width="10" height="10"/>
+    <rect x="120" y="80" width="10" height="10"/>
+    <rect x="150" y="80" width="10" height="10"/>
+    <rect x="180" y="80" width="10" height="10"/>
+    
+    <rect x="40" y="90" width="10" height="10"/>
+    <rect x="70" y="90" width="10" height="10"/>
+    <rect x="100" y="90" width="10" height="10"/>
+    <rect x="120" y="90" width="10" height="10"/>
+    <rect x="140" y="90" width="10" height="10"/>
+    <rect x="170" y="90" width="10" height="10"/>
+    
+    <rect x="10" y="100" width="10" height="10"/>
+    <rect x="30" y="100" width="10" height="10"/>
+    <rect x="60" y="100" width="10" height="10"/>
+    <rect x="80" y="100" width="10" height="10"/>
+    <rect x="110" y="100" width="10" height="10"/>
+    <rect x="130" y="100" width="10" height="10"/>
+    <rect x="150" y="100" width="10" height="10"/>
+    <rect x="180" y="100" width="10" height="10"/>
+    
+    <rect x="40" y="110" width="10" height="10"/>
+    <rect x="50" y="110" width="10" height="10"/>
+    <rect x="70" y="110" width="10" height="10"/>
+    <rect x="90" y="110" width="10" height="10"/>
+    <rect x="110" y="110" width="10" height="10"/>
+    <rect x="130" y="110" width="10" height="10"/>
+    <rect x="160" y="110" width="10" height="10"/>
+    
+    <rect x="20" y="120" width="10" height="10"/>
+    <rect x="40" y="120" width="10" height="10"/>
+    <rect x="60" y="120" width="10" height="10"/>
+    <rect x="70" y="120" width="10" height="10"/>
+    <rect x="120" y="120" width="10" height="10"/>
+    <rect x="130" y="120" width="10" height="10"/>
+    <rect x="150" y="120" width="10" height="10"/>
+    <rect x="170" y="120" width="10" height="10"/>
+    
+    <rect x="10" y="130" width="10" height="10"/>
+    <rect x="40" y="130" width="10" height="10"/>
+    <rect x="60" y="130" width="10" height="10"/>
+    <rect x="90" y="130" width="10" height="10"/>
+    <rect x="120" y="130" width="10" height="10"/>
+    <rect x="140" y="130" width="10" height="10"/>
+    <rect x="160" y="130" width="10" height="10"/>
+    <rect x="180" y="130" width="10" height="10"/>
+    
+    <rect x="50" y="140" width="10" height="10"/>
+    <rect x="80" y="140" width="10" height="10"/>
+    <rect x="100" y="140" width="10" height="10"/>
+    <rect x="130" y="140" width="10" height="10"/>
+    <rect x="140" y="140" width="10" height="10"/>
+    <rect x="160" y="140" width="10" height="10"/>
+    
+    <rect x="60" y="150" width="10" height="10"/>
+    <rect x="90" y="150" width="10" height="10"/>
+    <rect x="120" y="150" width="10" height="10"/>
+    <rect x="140" y="150" width="10" height="10"/>
+    <rect x="160" y="150" width="10" height="10"/>
+    <rect x="180" y="150" width="10" height="10"/>
+    
+    <rect x="50" y="160" width="10" height="10"/>
+    <rect x="80" y="160" width="10" height="10"/>
+    <rect x="90" y="160" width="10" height="10"/>
+    <rect x="130" y="160" width="10" height="10"/>
+    <rect x="150" y="160" width="10" height="10"/>
+    <rect x="170" y="160" width="10" height="10"/>
+    
+    <rect x="60" y="170" width="10" height="10"/>
+    <rect x="80" y="170" width="10" height="10"/>
+    <rect x="100" y="170" width="10" height="10"/>
+    <rect x="140" y="170" width="10" height="10"/>
+    <rect x="160" y="170" width="10" height="10"/>
+    
+    <rect x="50" y="180" width="10" height="10"/>
+    <rect x="70" y="180" width="10" height="10"/>
+    <rect x="90" y="180" width="10" height="10"/>
+    <rect x="110" y="180" width="10" height="10"/>
+    <rect x="130" y="180" width="10" height="10"/>
+    <rect x="150" y="180" width="10" height="10"/>
+    <rect x="170" y="180" width="10" height="10"/>
+  </g>
+  
+  <!-- Newsletter Icon Overlay (Gold Color) -->
+  <circle cx="100" cy="100" r="20" fill="#C3B091" opacity="0.9"/>
+  <g fill="white" transform="translate(88, 90) scale(0.045, 0.045)">
+    <path d="M500,149.5c-16.2,0-31.6,3.6-45.4,10L325.7,210H174.3L45.4,159.5c-13.8-6.4-29.2-10-45.4-10C0,149.5,0,149.5,0,149.5v212.1 c0,0,0,0,0,0c0,55.2,44.8,100,100,100h300c55.2,0,100-44.8,100-100c0,0,0,0,0,0V149.5C500,149.5,500,149.5,500,149.5z M304.8,280.5 l-54.4,43.6l-54.4-43.6l-100.5-80.3h309.7L304.8,280.5z M400,361.6c0,0,0,0,0,0c0,11-9,20-20,20H120c-11,0-20-9-20-20 c0,0,0,0,0,0V220.8l150,120l150-120V361.6z"/>
+  </g>
+</svg>
