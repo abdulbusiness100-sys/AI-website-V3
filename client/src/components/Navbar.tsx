@@ -132,8 +132,8 @@ const Navbar = ({ onOpenSignup }: NavbarProps) => {
                 className={cn(
                   "block px-3 py-2 rounded-md font-medium cursor-pointer",
                   location === "/about" 
-                    ? "bg-[#F5F5F5] text-[#C3B091]" 
-                    : "hover:bg-[#F5F5F5] hover:text-[#C3B091]"
+                    ? "bg-secondary text-[#C3B091]" 
+                    : "hover:bg-secondary hover:text-[#C3B091]"
                 )}
               >
                 About
@@ -145,8 +145,8 @@ const Navbar = ({ onOpenSignup }: NavbarProps) => {
                 className={cn(
                   "block px-3 py-2 rounded-md font-medium cursor-pointer",
                   location === "/services" 
-                    ? "bg-[#F5F5F5] text-[#C3B091]" 
-                    : "hover:bg-[#F5F5F5] hover:text-[#C3B091]"
+                    ? "bg-secondary text-[#C3B091]" 
+                    : "hover:bg-secondary hover:text-[#C3B091]"
                 )}
               >
                 Services
@@ -158,8 +158,8 @@ const Navbar = ({ onOpenSignup }: NavbarProps) => {
                 className={cn(
                   "block px-3 py-2 rounded-md font-medium cursor-pointer",
                   location === "/contact" 
-                    ? "bg-[#F5F5F5] text-[#C3B091]" 
-                    : "hover:bg-[#F5F5F5] hover:text-[#C3B091]"
+                    ? "bg-secondary text-[#C3B091]" 
+                    : "hover:bg-secondary hover:text-[#C3B091]"
                 )}
               >
                 Contact
@@ -171,8 +171,8 @@ const Navbar = ({ onOpenSignup }: NavbarProps) => {
                 className={cn(
                   "block px-3 py-2 rounded-md font-medium cursor-pointer",
                   location === "/how-it-works" 
-                    ? "bg-[#F5F5F5] text-[#C3B091]" 
-                    : "hover:bg-[#F5F5F5] hover:text-[#C3B091]"
+                    ? "bg-secondary text-[#C3B091]" 
+                    : "hover:bg-secondary hover:text-[#C3B091]"
                 )}
               >
                 How It Works
@@ -185,6 +185,15 @@ const Navbar = ({ onOpenSignup }: NavbarProps) => {
             >
               Get Early Access
             </span>
+            <button 
+              onClick={toggleTheme}
+              className="flex items-center justify-center w-full px-3 py-2 mt-2 rounded-md font-medium text-foreground hover:text-[#C3B091] transition-colors"
+              aria-label="Toggle theme"
+              data-testid="button-mobile-toggle-theme"
+            >
+              {theme === "light" ? <Moon className="w-5 h-5 mr-2" /> : <Sun className="w-5 h-5 mr-2" />}
+              {theme === "light" ? "Dark Mode" : "Light Mode"}
+            </button>
           </div>
         </div>
       </div>

@@ -146,7 +146,7 @@ const ContactPage = () => {
         </section>
         
         {/* Contact Section */}
-        <section className="py-12 bg-white/95 backdrop-blur-sm">
+        <section className="py-12 bg-background/95 backdrop-blur-sm">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col lg:flex-row gap-8">
             {/* Contact Information */}
@@ -160,7 +160,7 @@ const ContactPage = () => {
               <h2 className="text-2xl font-bold mb-4">
                 <span className="border-b-2 border-[#C3B091] pb-1">Get in Touch</span>
               </h2>
-              <p className="text-gray-600 mb-6">
+              <p className="text-muted-foreground mb-6">
                 We value your feedback and inquiries. Use any of the following methods to reach us or fill out the contact form, and we'll get back to you as soon as possible.
               </p>
               
@@ -171,7 +171,7 @@ const ContactPage = () => {
                   </div>
                   <div>
                     <h3 className="font-semibold text-sm">Our Location</h3>
-                    <p className="text-gray-600 text-xs">Anywhere you need us</p>
+                    <p className="text-muted-foreground text-xs">Anywhere you need us</p>
                   </div>
                 </div>
                 
@@ -181,7 +181,7 @@ const ContactPage = () => {
                   </div>
                   <div>
                     <h3 className="font-semibold text-sm">Email Us</h3>
-                    <p className="text-gray-600 text-xs">admin@spidxr.co.uk</p>
+                    <p className="text-muted-foreground text-xs">admin@spidxr.co.uk</p>
                   </div>
                 </div>
                 
@@ -191,9 +191,9 @@ const ContactPage = () => {
                   </div>
                   <div>
                     <h3 className="font-semibold text-sm">Business Hours</h3>
-                    <p className="text-gray-600 text-xs">Monday - Friday: 11am - 4am</p>
-                    <p className="text-gray-600 text-xs">Weekend: 7am - 3am</p>
-                    <p className="text-gray-600 text-xs font-semibold mt-1">24/7 DIAMOND MEMBERS ONLY</p>
+                    <p className="text-muted-foreground text-xs">Monday - Friday: 11am - 4am</p>
+                    <p className="text-muted-foreground text-xs">Weekend: 7am - 3am</p>
+                    <p className="text-muted-foreground text-xs font-semibold mt-1">24/7 DIAMOND MEMBERS ONLY</p>
                   </div>
                 </div>
               </div>

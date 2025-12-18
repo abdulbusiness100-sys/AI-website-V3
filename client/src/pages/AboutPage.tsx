@@ -133,7 +133,7 @@ const AboutPage = () => {
       </section>
       
       {/* About Content Section */}
-      <section className="bg-white/95 backdrop-blur-sm py-16 md:py-20">
+      <section className="bg-background/95 backdrop-blur-sm py-16 md:py-20">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.h1 
             className="text-3xl md:text-4xl font-bold mb-8"
@@ -145,7 +145,7 @@ const AboutPage = () => {
           </motion.h1>
           
           <motion.div 
-            className="space-y-4 text-gray-700 leading-relaxed border-2 border-[#C3B091] rounded-lg p-6 shadow-md"
+            className="space-y-4 text-foreground leading-relaxed border-2 border-[#C3B091] rounded-lg p-6 shadow-md"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.2 }}
@@ -200,7 +200,7 @@ const AboutPage = () => {
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
             <motion.div 
-              className="bg-white/95 p-5 rounded-lg shadow-md border-2 border-[#C3B091] backdrop-blur-sm hover:shadow-lg transition-shadow"
+              className="bg-card/95 p-5 rounded-lg shadow-md border-2 border-[#C3B091] backdrop-blur-sm hover:shadow-lg transition-shadow"
               variants={fadeUp}
               initial="hidden"
               whileInView="visible"
@@ -211,13 +211,13 @@ const AboutPage = () => {
                 <i className="fas fa-clock text-lg"></i>
               </div>
               <h3 className="text-lg font-semibold mb-2">Time-Saving</h3>
-              <p className="text-gray-600 text-sm">
+              <p className="text-muted-foreground text-sm">
                 We're committed to giving you back your most precious resource—time. Every service we offer is designed to help you reclaim hours in your day for what truly matters.
               </p>
             </motion.div>
             
             <motion.div 
-              className="bg-white/95 p-5 rounded-lg shadow-md border-2 border-[#C3B091] backdrop-blur-sm hover:shadow-lg transition-shadow"
+              className="bg-card/95 p-5 rounded-lg shadow-md border-2 border-[#C3B091] backdrop-blur-sm hover:shadow-lg transition-shadow"
               variants={fadeUp}
               initial="hidden"
               whileInView="visible"
@@ -229,13 +229,13 @@ const AboutPage = () => {
                 <i className="fas fa-shield-alt text-lg"></i>
               </div>
               <h3 className="text-lg font-semibold mb-2">Trustworthy</h3>
-              <p className="text-gray-600 text-sm">
+              <p className="text-muted-foreground text-sm">
                 Trust is at the core of our business. We carefully screen all our concierges and implement secure protocols to ensure your items and information are always protected.
               </p>
             </motion.div>
             
             <motion.div 
-              className="bg-white/95 p-5 rounded-lg shadow-md border-2 border-[#C3B091] backdrop-blur-sm hover:shadow-lg transition-shadow"
+              className="bg-card/95 p-5 rounded-lg shadow-md border-2 border-[#C3B091] backdrop-blur-sm hover:shadow-lg transition-shadow"
               variants={fadeUp}
               initial="hidden"
               whileInView="visible"
@@ -247,13 +247,13 @@ const AboutPage = () => {
                 <i className="fas fa-heart text-lg"></i>
               </div>
               <h3 className="text-lg font-semibold mb-2">Customer-Focused</h3>
-              <p className="text-gray-600 text-sm">
+              <p className="text-muted-foreground text-sm">
                 Your satisfaction drives everything we do. We're constantly improving our services based on customer feedback to deliver experiences that exceed expectations.
               </p>
             </motion.div>
             
             <motion.div 
-              className="bg-white/95 p-5 rounded-lg shadow-md border-2 border-[#C3B091] backdrop-blur-sm hover:shadow-lg transition-shadow"
+              className="bg-card/95 p-5 rounded-lg shadow-md border-2 border-[#C3B091] backdrop-blur-sm hover:shadow-lg transition-shadow"
               variants={fadeUp}
               initial="hidden"
               whileInView="visible"
@@ -265,13 +265,13 @@ const AboutPage = () => {
                 <i className="fas fa-seedling text-lg"></i>
               </div>
               <h3 className="text-lg font-semibold mb-2">Sustainability</h3>
-              <p className="text-gray-600 text-sm">
+              <p className="text-muted-foreground text-sm">
                 We're committed to reducing urban congestion and emissions by optimizing routes and encouraging eco-friendly transportation methods for our concierges.
               </p>
             </motion.div>
             
             <motion.div 
-              className="bg-white/95 p-5 rounded-lg shadow-md border-2 border-[#C3B091] backdrop-blur-sm hover:shadow-lg transition-shadow"
+              className="bg-card/95 p-5 rounded-lg shadow-md border-2 border-[#C3B091] backdrop-blur-sm hover:shadow-lg transition-shadow"
               variants={fadeUp}
               initial="hidden"
               whileInView="visible"
@@ -283,13 +283,13 @@ const AboutPage = () => {
                 <i className="fas fa-users text-lg"></i>
               </div>
               <h3 className="text-lg font-semibold mb-2">Community</h3>
-              <p className="text-gray-600 text-sm">
+              <p className="text-muted-foreground text-sm">
                 We believe in building stronger communities. Our local concierges know their neighborhoods well and we support local businesses through our services.
               </p>
             </motion.div>
             
             <motion.div 
-              className="bg-white/95 p-5 rounded-lg shadow-md border-2 border-[#C3B091] backdrop-blur-sm hover:shadow-lg transition-shadow"
+              className="bg-card/95 p-5 rounded-lg shadow-md border-2 border-[#C3B091] backdrop-blur-sm hover:shadow-lg transition-shadow"
               variants={fadeUp}
               initial="hidden"
               whileInView="visible"
@@ -301,7 +301,7 @@ const AboutPage = () => {
                 <i className="fas fa-lightbulb text-lg"></i>
               </div>
               <h3 className="text-lg font-semibold mb-2">Innovation</h3>
-              <p className="text-gray-600 text-sm">
+              <p className="text-muted-foreground text-sm">
                 We continuously explore new technologies and methods to make our services more efficient, reliable, and convenient for our customers.
               </p>
             </motion.div>

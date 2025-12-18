@@ -267,7 +267,7 @@ const HowItWorksPage = () => {
         </section>
 
         {/* Neural Network Section - Hyperrealistic Brain with Multicolored Neural Nodes */}
-        <section className="py-16 bg-white/95 backdrop-blur-sm">
+        <section className="py-16 bg-background/95 backdrop-blur-sm">
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
               <motion.h2 
@@ -279,7 +279,7 @@ const HowItWorksPage = () => {
                 The <span className="text-[#C3B091]">Neural Network</span> of Community Living
               </motion.h2>
               <motion.p 
-                className="text-gray-600 max-w-2xl mx-auto"
+                className="text-muted-foreground max-w-2xl mx-auto"
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}

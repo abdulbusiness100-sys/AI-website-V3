@@ -334,22 +334,22 @@ const HomePage = () => {
                   </p>
                 </div>
                 
-                <div className="bg-[#F8F8F8] p-5 rounded-lg">
+                <div className="bg-card p-5 rounded-lg">
                   <div className="w-10 h-10 bg-[#C3B091] rounded-full flex items-center justify-center mb-4">
                     <i className="fas fa-hourglass-half text-sm text-white"></i>
                   </div>
-                  <h3 className="font-semibold text-gray-800 text-lg mb-2">Time Reclaimed</h3>
-                  <p className="text-gray-600 text-sm">
+                  <h3 className="font-semibold text-foreground text-lg mb-2">Time Reclaimed</h3>
+                  <p className="text-muted-foreground text-sm">
                     Focus on priorities while we handle life's complex logistics.
                   </p>
                 </div>
                 
-                <div className="bg-[#F8F8F8] p-5 rounded-lg">
+                <div className="bg-card p-5 rounded-lg">
                   <div className="w-10 h-10 bg-[#C3B091] rounded-full flex items-center justify-center mb-4">
                     <i className="fas fa-fingerprint text-sm text-white"></i>
                   </div>
-                  <h3 className="font-semibold text-gray-800 text-lg mb-2">Tailored Experience</h3>
-                  <p className="text-gray-600 text-sm">
+                  <h3 className="font-semibold text-foreground text-lg mb-2">Tailored Experience</h3>
+                  <p className="text-muted-foreground text-sm">
                     Services customized to your unique requirements with precision.
                   </p>
                 </div>
@@ -657,16 +657,16 @@ const HomePage = () => {
             threshold={0.1}
           >
             {/* Plan 1 */}
-            <div className="bg-white text-black p-6 rounded-lg shadow-md border border-[#eaeaea] hover:shadow-lg transition-shadow">
+            <div className="bg-card text-card-foreground p-6 rounded-lg shadow-md border border-border hover:shadow-lg transition-shadow">
               <div className="text-center mb-4">
-                <h3 className="text-xl font-bold mb-1 text-gray-800">
+                <h3 className="text-xl font-bold mb-1 text-foreground">
                   <span className="inline-flex items-center">
                     <i className="fas fa-bolt text-[#C3B091] mr-2"></i> Lightning Services
                   </span>
                 </h3>
-                <p className="text-gray-600 text-sm">Pay as you go</p>
+                <p className="text-muted-foreground text-sm">Pay as you go</p>
               </div>
-              <ul className="space-y-2 mb-6 text-sm text-gray-700">
+              <ul className="space-y-2 mb-6 text-sm text-foreground">
                 <li className="flex items-start">
                   <i className="fas fa-check text-[#C3B091] mr-2 mt-1 text-xs"></i>
                   <span>No monthly commitment</span>
@@ -693,19 +693,19 @@ const HomePage = () => {
             </div>
             
             {/* Plan 2 */}
-            <div className="bg-white text-black p-6 rounded-lg shadow-md border-2 border-[#C3B091] hover:shadow-lg transition-shadow relative">
+            <div className="bg-card text-card-foreground p-6 rounded-lg shadow-md border-2 border-[#C3B091] hover:shadow-lg transition-shadow relative">
               <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-[#C3B091] text-white px-3 py-1 rounded-full text-xs font-semibold">
                 Most Popular
               </div>
               <div className="text-center mb-4">
-                <h3 className="text-xl font-bold mb-1 text-gray-800">
+                <h3 className="text-xl font-bold mb-1 text-foreground">
                   <span className="inline-flex items-center">
                     <i className="fas fa-crown text-[#C3B091] mr-2"></i> Golden Membership
                   </span>
                 </h3>
-                <p className="text-gray-600 text-sm">Monthly subscription</p>
+                <p className="text-muted-foreground text-sm">Monthly subscription</p>
               </div>
-              <ul className="space-y-2 mb-6 text-sm text-gray-700">
+              <ul className="space-y-2 mb-6 text-sm text-foreground">
                 <li className="flex items-start">
                   <i className="fas fa-check text-[#C3B091] mr-2 mt-1 text-xs"></i>
                   <span>Unlimited package collections</span>
@@ -744,16 +744,16 @@ const HomePage = () => {
             </div>
             
             {/* Plan 3 */}
-            <div className="bg-white text-black p-6 rounded-lg shadow-md border border-[#eaeaea] hover:shadow-lg transition-shadow">
+            <div className="bg-card text-card-foreground p-6 rounded-lg shadow-md border border-border hover:shadow-lg transition-shadow">
               <div className="text-center mb-4">
-                <h3 className="text-xl font-bold mb-1 text-gray-800">
+                <h3 className="text-xl font-bold mb-1 text-foreground">
                   <span className="inline-flex items-center">
                     <i className="fas fa-gem text-[#C3B091] mr-2"></i> Diamond Membership
                   </span>
                 </h3>
-                <p className="text-gray-600 text-sm">Premium subscription</p>
+                <p className="text-muted-foreground text-sm">Premium subscription</p>
               </div>
-              <ul className="space-y-2 mb-6 text-sm text-gray-700">
+              <ul className="space-y-2 mb-6 text-sm text-foreground">
                 <li className="flex items-start">
                   <i className="fas fa-check text-[#C3B091] mr-2 mt-1 text-xs"></i>
                   <span>All Golden benefits included</span>
@@ -803,9 +803,9 @@ const HomePage = () => {
       </section>
       
       {/* Email Newsletter */}
-      <section className="py-12 bg-white/95 backdrop-blur-sm">
+      <section className="py-12 bg-background/95 backdrop-blur-sm">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-[#F8F8F8] p-6 md:p-8 rounded-lg shadow-sm">
+          <div className="bg-card p-6 md:p-8 rounded-lg shadow-sm">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
               <div>
                 <ScrollAnimation
@@ -820,7 +820,7 @@ const HomePage = () => {
                 <ScrollAnimation
                   variant="fadeLeft"
                   delay={0.2}
-                  className="text-gray-600 text-sm mb-0 md:mb-0"
+                  className="text-muted-foreground text-sm mb-0 md:mb-0"
                 >
                   <p>
                     Subscribe to our newsletter for tips, exclusive offers, and updates on new services.

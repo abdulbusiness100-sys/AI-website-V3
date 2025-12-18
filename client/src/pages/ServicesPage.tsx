@@ -353,7 +353,7 @@ const ServicesPage = () => {
         </section>
       
       {/* Services Section */}
-      <section id="services-section" className="py-12 bg-white/95 backdrop-blur-sm relative">
+      <section id="services-section" className="py-12 bg-background/95 backdrop-blur-sm relative">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-10">
             <motion.h2 
@@ -366,7 +366,7 @@ const ServicesPage = () => {
               Our <span className="text-[#C3B091]">Premium</span> Services
             </motion.h2>
             <motion.p 
-              className="text-base text-gray-600 max-w-2xl mx-auto"
+              className="text-base text-muted-foreground max-w-2xl mx-auto"
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
@@ -416,7 +416,7 @@ const ServicesPage = () => {
                     <h2 className="text-lg font-bold">{service.title}</h2>
                   </div>
                   
-                  <p className="text-gray-600 text-xs mb-3">
+                  <p className="text-muted-foreground text-xs mb-3">
                     {service.description}
                   </p>
                   
@@ -599,7 +599,7 @@ const ServicesPage = () => {
           >
             {/* Plan 1 */}
             <motion.div 
-              className="bg-white text-black p-6 rounded-lg shadow-md border border-[#eaeaea] transition-all"
+              className="bg-card text-card-foreground p-6 rounded-lg shadow-md border border-border transition-all"
               variants={fadeUp}
               whileHover={{ 
                 scale: 1.05, 
@@ -609,14 +609,14 @@ const ServicesPage = () => {
               }}
             >
               <div className="text-center mb-4">
-                <h3 className="text-xl font-bold mb-1 text-gray-800">
+                <h3 className="text-xl font-bold mb-1 text-foreground">
                   <span className="inline-flex items-center">
                     <i className="fas fa-bolt text-[#C3B091] mr-2"></i> Lightning Services
                   </span>
                 </h3>
-                <p className="text-gray-600 text-sm">Pay as you go</p>
+                <p className="text-muted-foreground text-sm">Pay as you go</p>
               </div>
-              <ul className="space-y-2 mb-6 text-sm text-gray-700">
+              <ul className="space-y-2 mb-6 text-sm text-foreground">
                 <li className="flex items-start">
                   <i className="fas fa-check text-[#C3B091] mr-2 mt-1 text-xs"></i>
                   <span>No monthly commitment</span>
@@ -654,7 +654,7 @@ const ServicesPage = () => {
             
             {/* Plan 2 */}
             <motion.div 
-              className="bg-white text-black p-6 rounded-lg shadow-md border-2 border-[#C3B091] transition-all relative"
+              className="bg-card text-card-foreground p-6 rounded-lg shadow-md border-2 border-[#C3B091] transition-all relative"
               variants={fadeUp}
               whileHover={{ 
                 scale: 1.05, 
@@ -667,14 +667,14 @@ const ServicesPage = () => {
                 Most Popular
               </div>
               <div className="text-center mb-4">
-                <h3 className="text-xl font-bold mb-1 text-gray-800">
+                <h3 className="text-xl font-bold mb-1 text-foreground">
                   <span className="inline-flex items-center">
                     <i className="fas fa-crown text-[#C3B091] mr-2"></i> Golden Membership
                   </span>
                 </h3>
-                <p className="text-gray-600 text-sm">Monthly subscription</p>
+                <p className="text-muted-foreground text-sm">Monthly subscription</p>
               </div>
-              <ul className="space-y-2 mb-6 text-sm text-gray-700">
+              <ul className="space-y-2 mb-6 text-sm text-foreground">
                 <li className="flex items-start">
                   <i className="fas fa-check text-[#C3B091] mr-2 mt-1 text-xs"></i>
                   <span>Unlimited package collections</span>
@@ -725,7 +725,7 @@ const ServicesPage = () => {
             
             {/* Plan 3 */}
             <motion.div 
-              className="bg-white text-black p-6 rounded-lg shadow-md border border-[#eaeaea] transition-all"
+              className="bg-card text-card-foreground p-6 rounded-lg shadow-md border border-border transition-all"
               variants={fadeUp}
               whileHover={{ 
                 scale: 1.05, 
@@ -735,14 +735,14 @@ const ServicesPage = () => {
               }}
             >
               <div className="text-center mb-4">
-                <h3 className="text-xl font-bold mb-1 text-gray-800">
+                <h3 className="text-xl font-bold mb-1 text-foreground">
                   <span className="inline-flex items-center">
                     <i className="fas fa-gem mr-2 text-[#c3b091]"></i> Diamond Membership
                   </span>
                 </h3>
-                <p className="text-gray-600 text-sm">Premium subscription</p>
+                <p className="text-muted-foreground text-sm">Premium subscription</p>
               </div>
-              <ul className="space-y-2 mb-6 text-sm text-gray-700">
+              <ul className="space-y-2 mb-6 text-sm text-foreground">
                 <li className="flex items-start">
                   <i className="fas fa-check text-[#C3B091] mr-2 mt-1 text-xs"></i>
                   <span>All Golden benefits included</span>
