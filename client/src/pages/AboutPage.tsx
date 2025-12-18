@@ -310,7 +310,7 @@ const AboutPage = () => {
       </section>
       
       {/* Team Section - Matching live site design */}
-      <section id="team-section" className="py-14 bg-white/95 backdrop-blur-sm">
+      <section id="team-section" className="py-14 bg-background/95 backdrop-blur-sm">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-10">
             <motion.h2 
@@ -323,7 +323,7 @@ const AboutPage = () => {
               Meet Our <span className="text-[#C3B091]">Team</span>
             </motion.h2>
             <motion.p 
-              className="text-lg text-gray-600 max-w-2xl mx-auto"
+              className="text-lg text-muted-foreground max-w-2xl mx-auto"
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
@@ -338,7 +338,7 @@ const AboutPage = () => {
               <motion.div 
                 key={index}
                 data-testid={`card-team-member-${index}`}
-                className="bg-white rounded-lg overflow-hidden border-2 border-[#C3B091] shadow-sm hover:shadow-lg transition-all"
+                className="bg-card rounded-lg overflow-hidden border-2 border-[#C3B091] shadow-sm hover:shadow-lg transition-all"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -370,7 +370,7 @@ const AboutPage = () => {
                 <div className="p-5 text-center">
                   <h3 className="text-xl font-bold mb-2">{member.name}</h3>
                   <p className="text-[#C3B091] text-sm mb-4 font-medium">{member.role}</p>
-                  <p className="text-gray-600 text-sm leading-relaxed">{member.bio}</p>
+                  <p className="text-muted-foreground text-sm leading-relaxed">{member.bio}</p>
                 </div>
               </motion.div>
             ))}

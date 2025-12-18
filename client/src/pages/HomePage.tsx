@@ -417,7 +417,7 @@ const HomePage = () => {
       </section>
       
       {/* How It Works */}
-      <section id="how-it-works" className="py-16 bg-[#F8F8F8]/95 backdrop-blur-sm">
+      <section id="how-it-works" className="py-16 bg-card/95 backdrop-blur-sm">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-10">
             <ScrollAnimation
@@ -432,7 +432,7 @@ const HomePage = () => {
             <ScrollAnimation
               variant="fadeUp"
               delay={0.2}
-              className="text-lg text-gray-600 max-w-2xl mx-auto"
+              className="text-lg text-muted-foreground max-w-2xl mx-auto"
             >
               Experience convenience in just a few simple steps
             </ScrollAnimation>
@@ -836,7 +836,7 @@ const HomePage = () => {
                   <input 
                     type="email" 
                     placeholder="Enter your email" 
-                    className="flex-grow px-3 py-2 rounded-md border border-gray-300 focus:outline-none focus:border-[#C3B091] text-sm"
+                    className="flex-grow px-3 py-2 rounded-md border border-border bg-background text-foreground focus:outline-none focus:border-[#C3B091] text-sm"
                   />
                   <Button 
                     className="whitespace-nowrap bg-[#C3B091] hover:bg-[#b6a486] text-white transition-colors text-sm py-2 rounded-full"
@@ -849,7 +849,7 @@ const HomePage = () => {
                 <ScrollAnimation
                   variant="fadeRight"
                   delay={0.4}
-                  className="text-xs text-gray-500 mt-2"
+                  className="text-xs text-muted-foreground mt-2"
                 >
                   <p>
                     We respect your privacy. Unsubscribe at any time.
