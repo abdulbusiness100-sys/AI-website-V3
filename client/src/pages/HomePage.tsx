@@ -184,7 +184,7 @@ const HomePage = () => {
                   </Button>
                   
                   <Link href="/services">
-                    <Button size="lg" variant="outline" className="border-white/40 text-white hover:bg-white/10 backdrop-blur-sm rounded-full px-8">
+                    <Button size="lg" variant="outline" className="border-[#C3B091] text-[#C3B091] hover:bg-[#C3B091]/20 backdrop-blur-sm rounded-full px-8">
                       Explore Services
                     </Button>
                   </Link>

@@ -63,7 +63,7 @@ const HowItWorksAnimation = ({ steps }: HowItWorksAnimationProps) => {
     <div className="w-full py-8">
       {isMobile ? (
         // Mobile version - vertical layout
-        <div className="space-y-12">
+        (<div className="space-y-12">
           {steps.map((step, index) => (
             <motion.div 
               key={index}
@@ -100,10 +100,10 @@ const HowItWorksAnimation = ({ steps }: HowItWorksAnimationProps) => {
               )}
             </motion.div>
           ))}
-        </div>
+        </div>)
       ) : (
         // Desktop version - horizontal layout
-        <div className="relative flex items-center justify-between">
+        (<div className="relative flex items-center justify-between">
           {/* Steps */}
           <div className="flex justify-between items-start relative w-full">
             {steps.map((step, index) => (
@@ -125,7 +125,7 @@ const HowItWorksAnimation = ({ steps }: HowItWorksAnimationProps) => {
                   variants={contentVariants}
                 >
                   <h3 className="text-xl font-semibold mb-2">{`${step.step}. ${step.title}`}</h3>
-                  <p className="text-gray-600 max-w-xs mx-auto">
+                  <p className="max-w-xs mx-auto text-[#c3b091]">
                     {step.description}
                   </p>
                 </motion.div>
@@ -152,7 +152,7 @@ const HowItWorksAnimation = ({ steps }: HowItWorksAnimationProps) => {
               ))}
             </div>
           </div>
-        </div>
+        </div>)
       )}
     </div>
   );
