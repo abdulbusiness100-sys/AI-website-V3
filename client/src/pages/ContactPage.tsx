@@ -462,13 +462,13 @@ const ContactPage = () => {
       </section>
       
       {/* FAQ Section */}
-      <section className="py-12 bg-white/95 backdrop-blur-sm relative">
+      <section className="py-12 bg-background/95 backdrop-blur-sm relative">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-8">
-            <h2 className="text-2xl font-bold mb-2">
+            <h2 className="text-2xl font-bold mb-2 text-foreground">
               Frequently Asked <span className="text-[#C3B091]">Questions</span>
             </h2>
-            <p className="text-gray-600 text-sm">
+            <p className="text-muted-foreground text-sm">
               Find answers to common questions about contacting us
             </p>
           </div>
@@ -483,10 +483,10 @@ const ContactPage = () => {
               whileHover={{ scale: 1.02, transition: { duration: 0.3 } }}
             >
               <div className="bg-[#C3B091]/10 px-5 py-4">
-                <h3 className="font-semibold text-gray-800">How quickly will I receive a response to my inquiry?</h3>
+                <h3 className="font-semibold text-foreground">How quickly will I receive a response to my inquiry?</h3>
               </div>
               <div className="px-5 py-4">
-                <p className="text-gray-600">
+                <p className="text-muted-foreground">
                   We typically respond to all inquiries within 24 hours during business days. For urgent matters, we recommend calling our customer service line for immediate assistance.
                 </p>
               </div>
@@ -501,10 +501,10 @@ const ContactPage = () => {
               whileHover={{ scale: 1.02, transition: { duration: 0.3 } }}
             >
               <div className="bg-[#C3B091]/10 px-5 py-4">
-                <h3 className="font-semibold text-gray-800">What are your delivery times?</h3>
+                <h3 className="font-semibold text-foreground">What are your delivery times?</h3>
               </div>
               <div className="px-5 py-4">
-                <p className="text-gray-600">
+                <p className="text-muted-foreground">
                   For in-house eServices (SPIDXR established in apartment complexes), deliveries are ASAP. All task times are dependent on the specific request, but our goal is to complete your task before you can say buttercup! Diamond Members enjoy 24/7 priority service every day of the year.
                 </p>
               </div>
@@ -519,10 +519,10 @@ const ContactPage = () => {
               whileHover={{ scale: 1.02, transition: { duration: 0.3 } }}
             >
               <div className="bg-[#C3B091]/10 px-5 py-4">
-                <h3 className="font-semibold text-gray-800">Is there a weight limit for packages?</h3>
+                <h3 className="font-semibold text-foreground">Is there a weight limit for packages?</h3>
               </div>
               <div className="px-5 py-4">
-                <p className="text-gray-600">
+                <p className="text-muted-foreground">
                   There are absolutely no weight limits! Whatever it weighs, we will move it, bring it, or ship it. Our team is equipped to handle packages and items of all sizes and weights to meet your needs. No job is too small or too big for SPIDXR.
                 </p>
               </div>
@@ -537,10 +537,10 @@ const ContactPage = () => {
               whileHover={{ scale: 1.02, transition: { duration: 0.3 } }}
             >
               <div className="bg-[#C3B091]/10 px-5 py-4">
-                <h3 className="font-semibold text-gray-800">How do I report an issue with a delivery?</h3>
+                <h3 className="font-semibold text-foreground">How do I report an issue with a delivery?</h3>
               </div>
               <div className="px-5 py-4">
-                <p className="text-gray-600">
+                <p className="text-muted-foreground">
                   For delivery issues, the fastest way to get assistance is through the "Help" section in our app. Alternatively, you can email our dedicated support team at support@spidxrservices.co.uk with your order details.
                 </p>
               </div>
@@ -548,7 +548,7 @@ const ContactPage = () => {
           </div>
           
           {/* Action Buttons - Royal Blue, Rounded */}
-          <div className="mt-12 pt-10 border-t border-gray-200">
+          <div className="mt-12 pt-10 border-t border-border">
             <div className="flex flex-col sm:flex-row justify-center gap-4">
               <motion.div
                 whileHover={{ scale: 1.05 }}
