@@ -119,9 +119,11 @@ const HomePage = () => {
         style={{
           backgroundImage: 'linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.6)), url("/images/manchester-skyline22.jpg")',
           backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          backgroundAttachment: 'fixed',
-          filter: 'grayscale(100%)'
+          backgroundPosition: 'center top',
+          filter: 'grayscale(100%)',
+          WebkitBackfaceVisibility: 'hidden',
+          backfaceVisibility: 'hidden',
+          transform: 'translate3d(0, 0, 0)'
         }}
       />
       <div className="relative z-10">
