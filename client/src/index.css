@@ -5,12 +5,72 @@
 @tailwind utilities;
 
 @layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 30 5% 17%;
+    --card: 0 0% 100%;
+    --card-foreground: 30 5% 17%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 30 5% 17%;
+    --primary: 220 13% 37%;
+    --primary-foreground: 60 16% 76%;
+    --secondary: 0 0% 96%;
+    --secondary-foreground: 30 5% 17%;
+    --muted: 0 0% 90%;
+    --muted-foreground: 215 14% 34%;
+    --accent: 60 16% 76%;
+    --accent-foreground: 220 13% 37%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 90%;
+    --input: 0 0% 96%;
+    --ring: 220 13% 37%;
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 30 5% 17%;
+    --sidebar-primary: 220 13% 37%;
+    --sidebar-primary-foreground: 60 16% 76%;
+    --sidebar-accent: 60 16% 76%;
+    --sidebar-accent-foreground: 220 13% 37%;
+    --sidebar-border: 0 0% 90%;
+    --sidebar-ring: 220 13% 37%;
+  }
+
+  .dark {
+    --background: 210 11% 8%;
+    --foreground: 60 16% 90%;
+    --card: 210 11% 12%;
+    --card-foreground: 60 16% 90%;
+    --popover: 210 11% 12%;
+    --popover-foreground: 60 16% 90%;
+    --primary: 220 13% 37%;
+    --primary-foreground: 60 16% 76%;
+    --secondary: 210 11% 18%;
+    --secondary-foreground: 60 16% 90%;
+    --muted: 210 11% 18%;
+    --muted-foreground: 215 13% 70%;
+    --accent: 60 16% 76%;
+    --accent-foreground: 220 13% 37%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 11% 8%;
+    --border: 210 11% 18%;
+    --input: 210 11% 15%;
+    --ring: 60 16% 76%;
+    --sidebar-background: 210 11% 10%;
+    --sidebar-foreground: 60 16% 90%;
+    --sidebar-primary: 220 13% 37%;
+    --sidebar-primary-foreground: 60 16% 76%;
+    --sidebar-accent: 60 16% 76%;
+    --sidebar-accent-foreground: 220 13% 37%;
+    --sidebar-border: 210 11% 18%;
+    --sidebar-ring: 60 16% 76%;
+  }
+
   * {
     @apply border-border;
   }
 
   body {
-    @apply font-sans antialiased bg-background text-foreground tracking-tight;
+    @apply font-sans antialiased bg-background text-foreground tracking-tight transition-colors duration-300;
   }
 
   h1 {

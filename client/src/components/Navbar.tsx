@@ -3,6 +3,8 @@ import { useLocation, Link } from "wouter";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { useIsMobile } from "@/hooks/use-mobile";
+import { useTheme } from "@/components/ThemeProvider";
+import { Moon, Sun } from "lucide-react";
 
 interface NavbarProps {
   onOpenSignup?: () => void;
@@ -13,6 +15,7 @@ const Navbar = ({ onOpenSignup }: NavbarProps) => {
   const isMobile = useIsMobile();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const { theme, toggleTheme } = useTheme();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -45,7 +48,7 @@ const Navbar = ({ onOpenSignup }: NavbarProps) => {
 
   return (
     <header className={cn(
-      "fixed top-0 w-full bg-white z-50 transition-all duration-300",
+      "fixed top-0 w-full bg-background dark:bg-background z-50 transition-all duration-300",
       scrolled ? "shadow-md py-3" : "shadow-sm py-4"
     )}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -62,25 +65,25 @@ const Navbar = ({ onOpenSignup }: NavbarProps) => {
 
           <nav className="hidden md:flex items-center space-x-8">
             <Link href="/about">
-              <span className={cn("font-medium transition-colors cursor-pointer", 
+              <span className={cn("font-medium transition-colors cursor-pointer text-foreground", 
                  location === "/about" ? "text-[#C3B091]" : "hover:text-[#C3B091]")}>
                 About
               </span>
             </Link>
             <Link href="/services">
-              <span className={cn("font-medium transition-colors cursor-pointer", 
+              <span className={cn("font-medium transition-colors cursor-pointer text-foreground", 
                  location === "/services" ? "text-[#C3B091]" : "hover:text-[#C3B091]")}>
                 Services
               </span>
             </Link>
             <Link href="/contact">
-              <span className={cn("font-medium transition-colors cursor-pointer", 
+              <span className={cn("font-medium transition-colors cursor-pointer text-foreground", 
                  location === "/contact" ? "text-[#C3B091]" : "hover:text-[#C3B091]")}>
                 Contact
               </span>
             </Link>
             <Link href="/how-it-works">
-              <span className={cn("font-medium transition-colors cursor-pointer", 
+              <span className={cn("font-medium transition-colors cursor-pointer text-foreground", 
                  location === "/how-it-works" ? "text-[#C3B091]" : "hover:text-[#C3B091]")}>
                 How It Works
               </span>
@@ -93,11 +96,19 @@ const Navbar = ({ onOpenSignup }: NavbarProps) => {
             >
               Get Early Access
             </Button>
+            <button 
+              onClick={toggleTheme}
+              className="inline-flex items-center justify-center p-2 rounded-md text-foreground hover:text-[#C3B091] transition-colors"
+              aria-label="Toggle theme"
+              data-testid="button-toggle-theme"
+            >
+              {theme === "light" ? <Moon className="w-5 h-5" /> : <Sun className="w-5 h-5" />}
+            </button>
           </nav>
 
           <button 
             onClick={toggleMobileMenu}
-            className="md:hidden inline-flex items-center justify-center p-2 rounded-md text-[#2C2C2C] hover:text-[#C3B091]"
+            className="md:hidden inline-flex items-center justify-center p-2 rounded-md text-foreground hover:text-[#C3B091]"
             aria-expanded={mobileMenuOpen}
           >
             <span className="sr-only">Open main menu</span>
