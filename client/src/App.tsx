@@ -1,4 +1,4 @@
-import { Switch, Route } from "wouter";
+import { Switch, Route, Redirect } from "wouter";
 import { queryClient } from "./lib/queryClient";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
@@ -10,6 +10,7 @@ import ServicesPage from "@/pages/ServicesPage";
 import AboutPage from "@/pages/AboutPage";
 import ContactPage from "@/pages/ContactPage";
 import HowItWorksPage from "@/pages/HowItWorksPage";
+import { PrivacyPage, TermsPage } from "@/pages/LegalPages";
 
 // Target Pages
 import InvestorDeck from "@/pages/targets/InvestorDeck";
@@ -27,6 +28,9 @@ function Router() {
       <Route path="/services" component={ServicesPage}/>
       <Route path="/contact" component={ContactPage}/>
       <Route path="/how-it-works" component={HowItWorksPage}/>
+      <Route path="/privacy" component={PrivacyPage}/>
+      <Route path="/terms" component={TermsPage}/>
+      <Route path="/privacy-policy"><Redirect to="/privacy" replace /></Route>
       
       {/* Target Routes */}
       <Route path="/targets/investor-deck" component={InvestorDeck}/>

@@ -357,6 +357,18 @@ export default function ComingSoonPage() {
             Join the Waitlist · 50% Off for Life
           </motion.button>
         </div>
+
+        {/* ── Legal links ──────────────────────────────────────────── */}
+        <nav
+          style={{
+            position: "absolute", bottom: 20, left: 0, right: 0, zIndex: 3,
+            display: "flex", justifyContent: "center", gap: 20,
+            fontSize: 12, fontFamily: "'Space Grotesk', sans-serif", letterSpacing: "0.08em",
+          }}
+        >
+          <a href="/privacy" style={{ color: "rgba(201,169,110,0.7)", textDecoration: "none" }}>Privacy</a>
+          <a href="/terms" style={{ color: "rgba(201,169,110,0.7)", textDecoration: "none" }}>Terms</a>
+        </nav>
       </div>
 
       <WaitlistModal isOpen={modalOpen} onClose={() => setModalOpen(false)} />
