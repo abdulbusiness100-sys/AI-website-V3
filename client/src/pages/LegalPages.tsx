@@ -6,18 +6,21 @@ import { motion } from "framer-motion";
 const LAST_UPDATED = "30 September 2026";
 const CONTACT = "support@spidxr.co.uk";
 
-// Privacy Policy, section 7. Replace each [RETENTION_TABLE] with the confirmed period before publishing.
+// Privacy Policy, section 7 — mirrors RETENTION in the app backend (convex/retention.ts, 30 Sep 2026).
+// Change a period there and here together.
 const RETENTION: [string, string][] = [
-  ["Account profile (name, contact details, building and flat)", "[RETENTION_TABLE]"],
-  ["Request history and task details", "[RETENTION_TABLE]"],
-  ["Payment and transaction records", "[RETENTION_TABLE]"],
-  ["Collection codes for parcel pickups", "[RETENTION_TABLE]"],
-  ["AI chat transcripts", "[RETENTION_TABLE]"],
-  ["AI preference profile", "[RETENTION_TABLE]"],
-  ["Messages between you and your runner", "[RETENTION_TABLE]"],
-  ["Proof-of-delivery photos", "[RETENTION_TABLE]"],
-  ["Runner location during a task", "[RETENTION_TABLE]"],
-  ["Marketing consent record", "[RETENTION_TABLE]"],
+  ["Account profile (name, contact details, building and flat)", "Until you delete your account"],
+  ["Request history and task details", "6 years from the end of the financial year the task took place in (HMRC and contract-claim time limits). If you delete your account, completed tasks are kept in anonymised form"],
+  ["Payment and transaction records", "6 years from the end of the financial year the task took place in (HMRC). Card payment records are also held by Stripe under its own policy"],
+  ["Collection codes for parcel pickups", "Deleted within a day of the task being delivered, completed or cancelled"],
+  ["AI chat transcripts", "Not stored by SPIDXR. Your conversation is sent to our AI providers to answer you and is kept on your device only for the current session"],
+  ["AI preference profile", "Until you delete your account, or sooner if you ask us to delete it"],
+  ["Messages between you and your runner", "90 days after the task ends"],
+  ["Proof-of-delivery and task photos", "180 days after the task ends"],
+  ["In-app notifications", "90 days after they are sent"],
+  ["Runner location during a task", "48 hours after the task ends"],
+  ["Marketing consent record", "Until you delete your account"],
+  ["Operational audit log (who did what to a task, with no contact details)", "6 years"],
 ];
 
 const GOLD = "#C9A96E";
@@ -258,6 +261,10 @@ export function PrivacyPage() {
 
       <h2>7. Data retention: how long we keep your data</h2>
       <Table head={["Data", "How long we keep it"]} rows={RETENTION} />
+      <p>
+        If a task has an open problem report or a refund is still owed, we keep its messages and photos until that is
+        resolved, so the evidence is available. Deletion runs automatically every day.
+      </p>
 
       <h2>8. Your rights</h2>
       <p>
@@ -331,8 +338,8 @@ export function TermsPage() {
       />
       <p>
         We only accept requests for services that are currently active. Other services mentioned in the app or on our
-        website are not available during the beta. Capacity is limited during the beta, so we may limit how many requests
-        you can place each day.
+        website are not available during the beta. Runner capacity is limited during the beta, so a request may wait in the
+        queue until a runner is available to accept it.
       </p>
 
       <h2>4. Placing a request and pricing</h2>
