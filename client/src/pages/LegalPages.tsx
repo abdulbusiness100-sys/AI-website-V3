@@ -3,7 +3,7 @@ import { Link } from "wouter";
 import { motion } from "framer-motion";
 
 // Shown on both pages. Update on every change to either document.
-const LAST_UPDATED = "30 September 2026";
+const LAST_UPDATED = "6 October 2026";
 const CONTACT = "support@spidxr.co.uk";
 
 // Privacy Policy, section 7 — mirrors RETENTION in the app backend (convex/retention.ts, 30 Sep 2026).
@@ -330,7 +330,7 @@ export function TermsPage() {
       <Table
         head={["Service", "What we do", "Price"]}
         rows={[
-          ["Parcel Return", "Collect a parcel you're sending back from your door and drop it off for return", "£6.99"],
+          ["Parcel Return", "Collect a parcel you're sending back from your door and drop it off for return", "£7.99"],
           ["Parcel Collection", "Collect a parcel waiting for you at a locker, post office or collection point and bring it to your door", "£7.99"],
           ["Local Item Drop", "Bring an order you've already placed (for example a takeaway or courier delivery) from your building's lobby to your door", "£9.99"],
           ["Garbage Collection", "Take your rubbish from your door to your building's disposal point", "£5.99"],
