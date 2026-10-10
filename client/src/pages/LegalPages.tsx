@@ -208,6 +208,11 @@ export function PrivacyPage() {
         </li>
         <li>Your inputs are not used to train these providers' AI models by default.</li>
         <li>
+          <strong>Help improve SPIDXR</strong> is off unless you switch it on in the app&apos;s Settings. If you switch it on,
+          we may use your conversations, with names, flat numbers and codes removed, to improve how SPIDXR understands
+          and helps residents. You can switch it off at any time, and we then stop using your new conversations.
+        </li>
+        <li>
           The assistant keeps a short profile of your preferences (such as preferred stores, usual services, building
           access notes and timing preferences) to personalise the service. It is designed not to store door codes, PINs
           or card numbers. This profile is not used to make any decision that has a legal or similarly significant effect
