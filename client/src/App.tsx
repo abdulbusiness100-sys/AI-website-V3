@@ -11,6 +11,7 @@ import AboutPage from "@/pages/AboutPage";
 import ContactPage from "@/pages/ContactPage";
 import HowItWorksPage from "@/pages/HowItWorksPage";
 import { PrivacyPage, TermsPage } from "@/pages/LegalPages";
+import ReferralPage from "@/pages/ReferralPage";
 
 // Target Pages
 import InvestorDeck from "@/pages/targets/InvestorDeck";
@@ -31,6 +32,8 @@ function Router() {
       <Route path="/privacy" component={PrivacyPage}/>
       <Route path="/terms" component={TermsPage}/>
       <Route path="/privacy-policy"><Redirect to="/privacy" replace /></Route>
+      {/* Refer a friend (Points v2): the invite QR's link → open the app on the code. */}
+      <Route path="/r/:code" component={ReferralPage}/>
       
       {/* Target Routes */}
       <Route path="/targets/investor-deck" component={InvestorDeck}/>

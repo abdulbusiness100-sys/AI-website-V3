@@ -3,7 +3,7 @@ import { Link } from "wouter";
 import { motion } from "framer-motion";
 
 // Shown on both pages. Update on every change to either document.
-const LAST_UPDATED = "10 October 2026";
+const LAST_UPDATED = "12 October 2026";
 const CONTACT = "support@spidxr.co.uk";
 
 // Privacy Policy, section 7 — mirrors RETENTION in the app backend (convex/retention.ts, 30 Sep 2026).
@@ -23,10 +23,10 @@ const RETENTION: [string, string][] = [
   ["Operational audit log (who did what to a task, with no contact details)", "6 years"],
 ];
 
-const GOLD = "#C9A96E";
-const SANS = "'Space Grotesk', sans-serif";
-const SERIF = "Georgia, 'Playfair Display', 'Times New Roman', serif";
-const GRAIN = `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='280' height='280'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.78' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='280' height='280' filter='url(%23n)'/%3E%3C/svg%3E")`;
+export const GOLD = "#C9A96E";
+export const SANS = "'Space Grotesk', sans-serif";
+export const SERIF = "Georgia, 'Playfair Display', 'Times New Roman', serif";
+export const GRAIN = `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='280' height='280'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.78' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='280' height='280' filter='url(%23n)'/%3E%3C/svg%3E")`;
 
 const Mail = () => <a href={`mailto:${CONTACT}`}>{CONTACT}</a>;
 
@@ -412,10 +412,24 @@ export function TermsPage() {
 
       <h2>9. SPIDXR Points</h2>
       <p>
-        You earn <strong>2.5 points per £1</strong> of the request price when a task is completed.{" "}
-        <strong>250 points</strong> can be converted into one free service credit, which can only be used on a service of
-        £30 or more. None of the current beta services qualify, so credits cannot be used during the beta. We may change
-        the points rules on reasonable notice.
+        You earn <strong>5 points for every £1</strong> of the request price, rounded down, when a task is completed. At
+        checkout <strong>100 points take £1 off</strong> (one point is worth 1p), and you can pay for a whole task with
+        points. A task paid with points or with a free service credit does not earn points.
+      </p>
+      <p>
+        <strong>Rate your runner.</strong> Rating your SPIDXR runner after a completed task earns 10 points, once per
+        task.
+      </p>
+      <p>
+        <strong>Refer a friend.</strong> Every account has a personal invite code and QR code. When a friend who joined
+        with your code completes their first task, you get <strong>500 points</strong> and they get{" "}
+        <strong>250 points</strong>. You can earn referral points for up to 5 friends in each calendar month; friends
+        beyond that still get their 250. An account can be referred only once, only before its first completed task, and
+        never with its own code.
+      </p>
+      <p>
+        Points no longer convert into free service credits. A credit you already hold can still be used on a service of
+        £30 or more. We may change the points rules on reasonable notice.
       </p>
 
       <h2>10. Payment, refunds and complaints</h2>
