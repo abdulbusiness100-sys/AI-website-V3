@@ -412,9 +412,15 @@ export function TermsPage() {
 
       <h2>9. SPIDXR Points</h2>
       <p>
-        You earn <strong>5 points for every £1</strong> of the request price, rounded down, when a task is completed. At
-        checkout <strong>100 points take £1 off</strong> (one point is worth 1p), and you can pay for a whole task with
-        points. A task paid with points or with a free service credit does not earn points.
+        You earn <strong>5 points for every £1 you pay</strong>, rounded down, when a task is completed. When your
+        SPIDXR runner buys goods for you (for example on a grocery run), the goods you pay for count as well as our fee.
+        At checkout <strong>100 points take £1 off</strong> (one point is worth 1p): you can use{" "}
+        <strong>some or all of your points</strong> and pay the rest by card. Points are earned only on the part you do
+        not pay with points, so a task paid entirely with points, or with a free service credit, does not earn points.
+      </p>
+      <p>
+        If you cancel a task you paid for partly or wholly with points, the points come back to your balance in the same
+        proportion as any card refund under the cancellation ladder in section 7.
       </p>
       <p>
         <strong>Rate your runner.</strong> Rating your SPIDXR runner after a completed task earns 10 points, once per
