@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "wouter";
 import { motion } from "framer-motion";
 import { GOLD, GRAIN, SANS, SERIF } from "@/pages/LegalPages";
@@ -9,10 +9,45 @@ import { GOLD, GRAIN, SANS, SERIF } from "@/pages/LegalPages";
 // (convex/paymentConfig.ts REFERRAL_ALPHABET).
 const CODE_RE = /^[23456789ABCDEFGHJKMNPQRSTUVWXYZ]{7}$/;
 const FRIEND_POINTS = 250;
+// The App Store listing — null while SPIDXR is TestFlight-only. Set it at launch; nothing else changes.
+const APP_STORE_URL: string | null = null;
+
+// Invite through the install (14 Oct): "Get the app" copies the invite link, and the app reads it ONCE
+// on its first launch (iOS asks "Allow Paste" first; lib/inviteHandoff.ts). text/uri-list makes it a URL
+// on the iPhone's clipboard — the app only looks when a URL is there, so nobody else gets a prompt.
+async function copyInvite(url: string): Promise<boolean> {
+  try {
+    if (typeof ClipboardItem !== "undefined" && navigator.clipboard?.write) {
+      await navigator.clipboard.write([
+        new ClipboardItem({
+          "text/uri-list": new Blob([url], { type: "text/uri-list" }),
+          "text/plain": new Blob([url], { type: "text/plain" }),
+        }),
+      ]);
+      return true;
+    }
+  } catch {
+    // a browser without text/uri-list: plain text below
+  }
+  try {
+    await navigator.clipboard.writeText(url);
+    return true;
+  } catch {
+    return false;
+  }
+}
 
 export default function ReferralPage({ params }: { params: { code?: string } }) {
   const raw = (params.code ?? "").trim().toUpperCase();
   const code = CODE_RE.test(raw) ? raw : null;
+  const [copied, setCopied] = useState<boolean | null>(null);
+
+  const getTheApp = async () => {
+    if (!code) return;
+    const ok = await copyInvite(`https://www.spidxr.co.uk/r/${code}`);
+    setCopied(ok);
+    if (APP_STORE_URL) window.location.href = APP_STORE_URL;
+  };
 
   useEffect(() => {
     document.title = "Join SPIDXR | SPIDXR";
@@ -85,18 +120,29 @@ export default function ReferralPage({ params }: { params: { code?: string } }) 
                   Open in SPIDXR
                   <span aria-hidden className="ml-2 transition-transform duration-200 group-hover:translate-x-1">→</span>
                 </a>
-                <span
-                  aria-disabled="true"
-                  className="inline-flex h-14 items-center justify-center rounded-full text-[15px] font-medium text-white/50"
-                  style={{ background: "rgba(255,255,255,0.06)" }}
+                <button
+                  type="button"
+                  onClick={getTheApp}
+                  className="inline-flex h-14 items-center justify-center rounded-full text-[16px] font-semibold text-white transition-transform duration-200 hover:-translate-y-0.5 active:scale-[0.98]"
+                  style={{ background: "rgba(255,255,255,0.08)" }}
                 >
-                  App Store — coming soon
-                </span>
+                  {APP_STORE_URL ? "Get the app" : "Not installed yet? Keep my invite"}
+                </button>
               </motion.div>
 
-              <motion.p {...rise(0.44)} className="mt-6 text-sm leading-relaxed text-white/45">
-                SPIDXR is in beta on TestFlight. Ask your friend for a TestFlight invite, install the app, then come back
-                and tap Open in SPIDXR. You can also scan your friend&apos;s QR code from the app&apos;s welcome screen.
+              <p aria-live="polite" className="mt-4 min-h-[1.25rem] text-sm leading-relaxed" style={{ color: copied === false ? "rgba(255,255,255,0.6)" : GOLD }}>
+                {copied === true
+                  ? "Invite saved to this phone. Install SPIDXR and open it — it asks once to paste your invite. Tap Allow."
+                  : copied === false
+                    ? "Couldn’t save the invite on this browser. After installing, scan your friend’s QR code from the app’s welcome screen."
+                    : null}
+              </p>
+
+              <motion.p {...rise(0.44)} className="mt-4 text-sm leading-relaxed text-white/45">
+                {APP_STORE_URL
+                  ? "Get the app copies your invite link to this phone’s clipboard, so it’s still there after the install. SPIDXR reads it once, when you first open the app, and only if you allow it."
+                  : "SPIDXR is in beta on TestFlight. Tap the button above to keep your invite on this phone, install SPIDXR from your friend’s TestFlight invite, then open it — it asks once to paste the invite. Already installed? Tap Open in SPIDXR."}{" "}
+                You can also scan your friend&apos;s QR code from the app&apos;s welcome screen.
               </motion.p>
             </>
           ) : (
