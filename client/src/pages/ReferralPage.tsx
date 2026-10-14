@@ -111,39 +111,32 @@ export default function ReferralPage({ params }: { params: { code?: string } }) 
                 </p>
               </motion.div>
 
-              <motion.div {...rise(0.36)} className="mt-8 flex flex-col gap-3">
-                <a
-                  href={`spidxrexpo://r/${code}`}
-                  className="group inline-flex h-14 items-center justify-center rounded-full text-[17px] font-semibold text-black transition-transform duration-200 hover:-translate-y-0.5 active:scale-[0.98]"
-                  style={{ background: "linear-gradient(120deg, #EAD9A8, #C9A96E 45%, #9C7A3C)", boxShadow: "0 14px 34px -12px rgba(201,169,110,0.55)" }}
-                >
-                  Open in SPIDXR
-                  <span aria-hidden className="ml-2 transition-transform duration-200 group-hover:translate-x-1">→</span>
-                </a>
+              {/* One button (Abdul, 14 Oct: "Keep my invite" made no sense): it saves the invite on this phone,
+                  then goes to the App Store once SPIDXR is listed. The app picks the invite up on first open. */}
+              <motion.div {...rise(0.36)} className="mt-8 flex flex-col items-center gap-4">
                 <button
                   type="button"
                   onClick={getTheApp}
-                  className="inline-flex h-14 items-center justify-center rounded-full text-[16px] font-semibold text-white transition-transform duration-200 hover:-translate-y-0.5 active:scale-[0.98]"
-                  style={{ background: "rgba(255,255,255,0.08)" }}
+                  className="group inline-flex h-14 w-full items-center justify-center rounded-full text-[17px] font-semibold text-black transition-transform duration-200 hover:-translate-y-0.5 active:scale-[0.98]"
+                  style={{ background: "linear-gradient(120deg, #EAD9A8, #C9A96E 45%, #9C7A3C)", boxShadow: "0 14px 34px -12px rgba(201,169,110,0.55)" }}
                 >
-                  {APP_STORE_URL ? "Get the app" : "Not installed yet? Keep my invite"}
+                  Get SPIDXR
+                  <span aria-hidden className="ml-2 transition-transform duration-200 group-hover:translate-x-1">→</span>
                 </button>
+                <a href={`spidxrexpo://r/${code}`} className="text-[15px] font-medium text-white/60 underline-offset-4 hover:text-white hover:underline">
+                  Already have SPIDXR? Open it
+                </a>
               </motion.div>
 
-              <p aria-live="polite" className="mt-4 min-h-[1.25rem] text-sm leading-relaxed" style={{ color: copied === false ? "rgba(255,255,255,0.6)" : GOLD }}>
+              <p aria-live="polite" className="mt-4 min-h-[1.25rem] text-center text-sm leading-relaxed" style={{ color: copied === false ? "rgba(255,255,255,0.6)" : GOLD }}>
                 {copied === true
-                  ? "Invite saved to this phone. Install SPIDXR and open it — it asks once to paste your invite. Tap Allow."
+                  ? APP_STORE_URL
+                    ? "Your invite is saved. When SPIDXR opens, tap Allow to bring it in."
+                    : "Your invite is saved. Install SPIDXR from your TestFlight invite, open it, and tap Allow to bring it in."
                   : copied === false
-                    ? "Couldn’t save the invite on this browser. After installing, scan your friend’s QR code from the app’s welcome screen."
+                    ? "Couldn’t save the invite on this browser. Once SPIDXR is installed, scan your friend’s QR code from its welcome screen."
                     : null}
               </p>
-
-              <motion.p {...rise(0.44)} className="mt-4 text-sm leading-relaxed text-white/45">
-                {APP_STORE_URL
-                  ? "Get the app copies your invite link to this phone’s clipboard, so it’s still there after the install. SPIDXR reads it once, when you first open the app, and only if you allow it."
-                  : "SPIDXR is in beta on TestFlight. Tap the button above to keep your invite on this phone, install SPIDXR from your friend’s TestFlight invite, then open it — it asks once to paste the invite. Already installed? Tap Open in SPIDXR."}{" "}
-                You can also scan your friend&apos;s QR code from the app&apos;s welcome screen.
-              </motion.p>
             </>
           ) : (
             <motion.p {...rise(0.2)} className="mt-6 text-[17px] leading-relaxed text-white/75">
