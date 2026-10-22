@@ -3,11 +3,26 @@
     "apps": [],
     "details": [
       {
-        "appIDs": ["8UB93H7R5G.com.spidxr.app"],
-        "components": [{ "/": "/r/*", "comment": "A friend's invite opens the installed app" }],
+        "appIDs": [
+          "8UB93H7R5G.com.spidxr.app"
+        ],
+        "components": [
+          {
+            "/": "/r/*",
+            "comment": "A friend's invite opens the installed app"
+          }
+        ],
         "appID": "8UB93H7R5G.com.spidxr.app",
-        "paths": ["/r/*"]
+        "paths": [
+          "/r/*"
+        ]
       }
+    ]
+  },
+  "webcredentials": {
+    "apps": [
+      "8UB93H7R5G.com.spidxr.app",
+      "8UB93H7R5G.com.spidxr.app.preview"
     ]
   }
 }
