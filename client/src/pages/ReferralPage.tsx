@@ -9,6 +9,24 @@ import { GOLD, GRAIN, SANS, SERIF } from "@/pages/LegalPages";
 // (convex/paymentConfig.ts REFERRAL_ALPHABET).
 const CODE_RE = /^[23456789ABCDEFGHJKMNPQRSTUVWXYZ]{7}$/;
 const FRIEND_POINTS = 250;
+// A beta tester's link (SPIDXRAPP convex/testerInvites.ts, TESTER_WELCOME_POINTS) pays its points on joining, a friend's after
+// the first task (Abdul, 26 Oct). Both use /r/<CODE>; the live server says which one a code is. Removed with the beta.
+const TESTER_POINTS = 250;
+const CONVEX_URL = "https://valuable-condor-597.eu-west-1.convex.cloud";
+
+async function inviteKind(code: string): Promise<string | null> {
+  try {
+    const res = await fetch(`${CONVEX_URL}/api/query`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ path: "testerInvites:inviteKind", args: { code }, format: "json" }),
+    });
+    const body = await res.json();
+    return body?.status === "success" ? body.value ?? null : null;
+  } catch {
+    return null; // no answer: the friend wording, as before
+  }
+}
 // The App Store listing — null while SPIDXR is TestFlight-only. Set it at launch; nothing else changes.
 const APP_STORE_URL: string | null = null;
 
@@ -41,6 +59,11 @@ export default function ReferralPage({ params }: { params: { code?: string } }) 
   const raw = (params.code ?? "").trim().toUpperCase();
   const code = CODE_RE.test(raw) ? raw : null;
   const [copied, setCopied] = useState<boolean | null>(null);
+  const [kind, setKind] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (code) inviteKind(code).then(setKind);
+  }, [code]);
 
   const getTheApp = async () => {
     if (!code) return;
@@ -96,8 +119,17 @@ export default function ReferralPage({ params }: { params: { code?: string } }) 
           {code ? (
             <>
               <motion.p {...rise(0.2)} className="mt-6 text-[17px] leading-relaxed text-white/75">
-                A friend has invited you to SPIDXR, the concierge for your building. Finish your first task and you get{" "}
-                <strong className="text-white">{FRIEND_POINTS} points</strong>.
+                {kind === "tester" ? (
+                  <>
+                    You&apos;re invited to test SPIDXR, the concierge for your building. Sign up with this invite and you get{" "}
+                    <strong className="text-white">{TESTER_POINTS} points</strong> straight away.
+                  </>
+                ) : (
+                  <>
+                    A friend has invited you to SPIDXR, the concierge for your building. Finish your first task and you get{" "}
+                    <strong className="text-white">{FRIEND_POINTS} points</strong>.
+                  </>
+                )}
               </motion.p>
 
               <motion.div
