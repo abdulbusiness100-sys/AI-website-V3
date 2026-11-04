@@ -335,10 +335,10 @@ export function TermsPage() {
       <Table
         head={["Service", "What we do", "Price"]}
         rows={[
-          ["Parcel Return", "Collect a parcel you're sending back from your door and drop it off for return", "£8.99"],
-          ["Parcel Collection", "Collect a parcel waiting for you at a locker, post office or collection point and bring it to your door", "£7.99"],
+          ["Parcel Return", "Collect a parcel you're sending back from your door and drop it off for return", "£4.99"],
+          ["Parcel Collection", "Collect a parcel waiting for you at a locker, post office or collection point and bring it to your door", "£3.99"],
           ["Local Item Drop", "Bring an order you've already placed (for example a takeaway or courier delivery) from your building's lobby to your door", "£9.99"],
-          ["Garbage Collection", "Take your rubbish from your door to your building's disposal point", "£6.99"],
+          ["Garbage Collection", "Take your rubbish from your door to your building's disposal point", "£2.99"],
         ]}
       />
       <p>
