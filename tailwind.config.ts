@@ -5,6 +5,13 @@ export default {
   content: ["./client/index.html", "./client/src/**/*.{js,jsx,ts,tsx}"],
   theme: {
     extend: {
+      // Space Grotesk only (Abdul, 5 Nov) — sans, serif and mono alike, so no utility or preflight default
+      // (code/pre/kbd) can bring a system face back. script/build.ts checks the built CSS/JS.
+      fontFamily: {
+        sans: ['"Space Grotesk"', "system-ui", "sans-serif"],
+        serif: ['"Space Grotesk"', "system-ui", "sans-serif"],
+        mono: ['"Space Grotesk"', "system-ui", "sans-serif"],
+      },
       boxShadow: {
         'soft': '0 2px 15px -3px rgba(0, 0, 0, 0.07), 0 10px 20px -2px rgba(0, 0, 0, 0.04)',
       },

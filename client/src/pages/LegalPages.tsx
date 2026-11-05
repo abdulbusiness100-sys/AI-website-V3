@@ -25,7 +25,6 @@ const RETENTION: [string, string][] = [
 
 export const GOLD = "#C9A96E";
 export const SANS = "'Space Grotesk', sans-serif";
-export const SERIF = "Georgia, 'Playfair Display', 'Times New Roman', serif";
 export const GRAIN = `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='280' height='280'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.78' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='280' height='280' filter='url(%23n)'/%3E%3C/svg%3E")`;
 
 const Mail = () => <a href={`mailto:${CONTACT}`}>{CONTACT}</a>;
@@ -114,7 +113,7 @@ function LegalShell({ title, active, children }: { title: string; active: "priva
           </p>
           <h1
             className="mt-3 text-white"
-            style={{ fontFamily: SERIF, fontStyle: "italic", fontSize: "clamp(34px, 7vw, 54px)", lineHeight: 1.1, letterSpacing: "-0.015em" }}
+            style={{ fontFamily: SANS, fontStyle: "italic", fontSize: "clamp(34px, 7vw, 54px)", lineHeight: 1.1, letterSpacing: "-0.015em" }}
           >
             {title}
           </h1>

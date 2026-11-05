@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "wouter";
 import { motion } from "framer-motion";
-import { GOLD, GRAIN, SANS, SERIF } from "@/pages/LegalPages";
+import { GOLD, GRAIN, SANS } from "@/pages/LegalPages";
 
 // Refer a friend (Points v2, 12 Oct 2026). A friend's invite QR encodes https://www.spidxr.co.uk/r/<CODE>.
 // This page opens the app on the same code (spidxrexpo://r/<CODE>), where it is kept until the account
@@ -110,7 +110,7 @@ export default function ReferralPage({ params }: { params: { code?: string } }) 
           <motion.h1
             {...rise(0.08)}
             className="mt-3 text-white"
-            style={{ fontFamily: SERIF, fontStyle: "italic", fontSize: "clamp(40px, 9vw, 64px)", lineHeight: 1.05, letterSpacing: "-0.015em" }}
+            style={{ fontFamily: SANS, fontStyle: "italic", fontSize: "clamp(40px, 9vw, 64px)", lineHeight: 1.05, letterSpacing: "-0.015em" }}
           >
             Join SPIDXR
           </motion.h1>

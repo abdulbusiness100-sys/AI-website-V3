@@ -157,7 +157,7 @@ const HomePage = () => {
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ duration: 0.5, delay: 0.2 }}
-                  style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 400, letterSpacing: '0.02em' }}
+                  style={{ fontWeight: 400, letterSpacing: '0.02em' }}
                 >
                   <span className="text-[#C3B091] italic">Simplify Life.</span> <span className="text-white font-bold">Amplify Time.</span>
                 </motion.h2>
