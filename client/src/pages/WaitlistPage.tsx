@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState, type FormEvent } from "react";
 import { Link } from "wouter";
-import markUrl from "@/assets/spidxr-mark.svg";
+import appIconUrl from "@/assets/spidxr-app-icon.svg";
 import { cleanEmail, cleanMobile, cleanSource, EMAIL_ERROR, MOBILE_ERROR } from "@/lib/waitlist";
 import "./WaitlistPage.css";
 
@@ -12,6 +12,11 @@ const FONT_HREF = "https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@4
 const GENERIC_ERROR = "Something went wrong, please try again.";
 // Portrait screens get the phone crop. Keep in step with the same query in WaitlistPage.css.
 const PHONE_PHOTO = "(max-aspect-ratio: 3/4)";
+// The desktop photo is 16:9 and covers the screen, so on taller screens it is drawn wider than the viewport.
+const DESKTOP_SIZES = "(max-aspect-ratio: 16/9) 177.78vh, 100vw";
+// The waitlist closes at the end of 30 Nov 2026, UK time (GMT then, so midnight UTC). The server also answers 410.
+const WAITLIST_CLOSES_AT = Date.UTC(2026, 11, 1);
+const CLOSED_MESSAGE = "The waitlist has closed.";
 
 type Field = "email" | "phone";
 type Errors = Partial<Record<Field | "form", string>>;
@@ -20,11 +25,14 @@ export default function WaitlistPage() {
   const startedAt = useRef(Date.now());
   const refs = { email: useRef<HTMLInputElement>(null), phone: useRef<HTMLInputElement>(null) };
   const doneRef = useRef<HTMLHeadingElement>(null);
+  const submitted = useRef(false);
   const [values, setValues] = useState({ email: "", phone: "" });
   const [consent, setConsent] = useState(false);
   const [honeypot, setHoneypot] = useState("");
   const [errors, setErrors] = useState<Errors>({});
-  const [status, setStatus] = useState<"idle" | "sending" | "done">("idle");
+  const [status, setStatus] = useState<"idle" | "sending" | "done" | "closed">(() =>
+    Date.now() >= WAITLIST_CLOSES_AT ? "closed" : "idle"
+  );
 
   useEffect(() => {
     if (document.querySelector('link[href*="Space+Grotesk"]')) return;
@@ -32,7 +40,8 @@ export default function WaitlistPage() {
   }, []);
 
   useEffect(() => {
-    if (status === "done") doneRef.current?.focus();
+    // After a submit, move focus to the outcome so screen readers announce it (not on first load).
+    if (submitted.current && (status === "done" || status === "closed")) doneRef.current?.focus();
   }, [status]);
 
   const fail = (found: Errors) => {
@@ -51,6 +60,7 @@ export default function WaitlistPage() {
     if (found.email || found.phone) return fail(found);
 
     setErrors({});
+    submitted.current = true;
     setStatus("sending");
     try {
       const res = await fetch(WAITLIST_URL, {
@@ -65,9 +75,13 @@ export default function WaitlistPage() {
           elapsedMs: Date.now() - startedAt.current,
         }),
       });
-      const body: { ok?: unknown; error?: unknown; field?: unknown } = await res.json().catch(() => ({}));
+      const body: { ok?: unknown; error?: unknown; field?: unknown; closed?: unknown } = await res.json().catch(() => ({}));
       if (res.ok && body.ok === true) {
         setStatus("done");
+        return;
+      }
+      if (res.status === 410 || body.closed === true) {
+        setStatus("closed");
         return;
       }
       // 400 (a field, or "check your details") and 429 (busy) carry a message for people; anything else doesn't.
@@ -104,11 +118,11 @@ export default function WaitlistPage() {
       {/* Deansgate skyline, Mylo Kaye: Unsplash NXtGjC7osPs (desktop), Pexels 29801941 (phone). Licences in the PR.
           To change the photo, replace these three files under the same names; framing is object-position in the CSS. */}
       <picture className="wl-photo" aria-hidden="true">
-        <source media={PHONE_PHOTO} srcSet="/images/cover/skyline-p1290.webp" width={1290} height={2792} />
+        <source media={PHONE_PHOTO} srcSet="/images/cover/skyline-p2057.webp" width={2057} height={4452} />
         <img
           src="/images/cover/skyline-d1920.webp"
           srcSet="/images/cover/skyline-d1920.webp 1920w, /images/cover/skyline-d3840.webp 3840w"
-          sizes="100vw"
+          sizes={DESKTOP_SIZES}
           width={1920}
           height={1080}
           alt=""
@@ -121,9 +135,9 @@ export default function WaitlistPage() {
 
       <main className="wl-stage">
         <div className="wl-hero">
-          {/* Lock-up: the gold eyes mark and the wordmark, one row. */}
+          {/* Lock-up: the app icon (its own black tile, vector) beside the wordmark, one row. */}
           <div className="wl-lockup wl-in" role="img" aria-label="SPIDXR">
-            <img className="wl-mark" src={markUrl} alt="" width={58} height={28} />
+            <img className="wl-icon" src={appIconUrl} alt="" width={48} height={48} />
             <span className="wl-wordmark" />
           </div>
           <h1 className="wl-title wl-in">Your personal concierge.</h1>
@@ -144,6 +158,12 @@ export default function WaitlistPage() {
                 Your welcome gift: <strong>100 points and 1 free task</strong>, waiting when you join with the same email or
                 number.
               </p>
+            </div>
+          ) : status === "closed" ? (
+            <div className="wl-done">
+              <h2 ref={doneRef} tabIndex={-1}>
+                {CLOSED_MESSAGE}
+              </h2>
             </div>
           ) : (
             <form noValidate onSubmit={submit}>

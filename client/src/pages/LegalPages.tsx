@@ -514,7 +514,7 @@ export function TermsPage() {
   );
 }
 
-// Welcome gift for people who join the website waitlist. DRAFT: needs Abdul + #compliance review. Expiry 30 Nov 2026 (Abdul, 5 Nov).
+// Welcome gift for people who join the website waitlist. DRAFT: needs Abdul + #compliance review. The list closes 30 Nov 2026; the gift never expires (Abdul, 5 Nov).
 export function OfferTermsPage() {
   return (
     <LegalShell title="Waitlist Offer Terms" active="offer">
@@ -546,7 +546,8 @@ export function OfferTermsPage() {
         <li>One welcome gift per person, however many times you join the list.</li>
         <li>The gift has no cash value, can&apos;t be exchanged for cash and can&apos;t be transferred to anyone else.</li>
         <li>
-          Your welcome gift must be used by <strong>30 November 2026</strong>. Anything unused then expires.
+          The waitlist closes at the end of <strong>30 November 2026</strong>. Your welcome gift doesn&apos;t expire: it
+          stays in your account until you use it.
         </li>
       </ul>
 

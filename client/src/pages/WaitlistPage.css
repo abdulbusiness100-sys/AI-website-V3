@@ -6,7 +6,7 @@
 .wl-root {
   --wl-gold-rgb: 201 169 110;
   --wl-ease: cubic-bezier(0.22, 1, 0.36, 1);
-  --wl-cap: 22px; /* wordmark cap height; the mark is 1.3x it (Abdul: icon ~48 px, cap ~45%) */
+  --wl-cap: 22px; /* wordmark cap height = 45% of the 48 px app icon (Abdul, 5 Nov) */
 
   /* On the photo (both modes) */
   --wl-ink-rgb: 26 20 14; /* light mode: a warm umber veil, a touch lighter than dark mode's ink */
@@ -14,9 +14,10 @@
   --wl-scrim-mid: 0.18;
   --wl-scrim-low: 0.4;
   --wl-scrim-bottom: 0.82;
-  --wl-scrim-hero: 0.74;
+  --wl-scrim-hero: 0.84;
   --wl-scrim-side: 0.52;
-  --wl-pool: 50% 14%;
+  --wl-pool: 50% 24%;
+  --wl-pool-size: 115% 26%; /* phones: wider than the screen so both ends of the headline sit in it */
   --wl-side: linear-gradient(transparent, transparent);
   --wl-hero-text: #f5efe4;
   --wl-hero-text-2: #e6ddcc;
@@ -69,10 +70,10 @@
     --wl-scrim-mid: 0.26;
     --wl-scrim-low: 0.48;
     --wl-scrim-bottom: 0.88;
-    --wl-scrim-hero: 0.7;
+    --wl-scrim-hero: 0.78;
     --wl-scrim-side: 0.6;
 
-    --wl-glass-fill: linear-gradient(180deg, rgb(24 21 17 / 0.5), rgb(14 12 10 / 0.64));
+    --wl-glass-fill: linear-gradient(180deg, rgb(24 21 17 / 0.58), rgb(14 12 10 / 0.68));
     --wl-glass-edge: rgb(var(--wl-gold-rgb) / 0.32);
     --wl-glass-hl: rgb(255 255 255 / 0.14);
     --wl-glass-ll: rgb(0 0 0 / 0.4);
@@ -127,7 +128,7 @@ html:has(.wl-root) body {
   z-index: -2;
   background:
     var(--wl-side),
-    radial-gradient(ellipse 85% 26% at var(--wl-pool), rgb(var(--wl-ink-rgb) / var(--wl-scrim-hero)), transparent 72%),
+    radial-gradient(ellipse var(--wl-pool-size) at var(--wl-pool), rgb(var(--wl-ink-rgb) / var(--wl-scrim-hero)), transparent 72%),
     linear-gradient(
       180deg,
       rgb(var(--wl-ink-rgb) / var(--wl-scrim-top)) 0%,
@@ -145,19 +146,21 @@ html:has(.wl-root) body {
 }
 
 /* ── Stage ──────────────────────────────────────────────── */
+/* Lock-up, headline and card read as one group: fixed gaps inside, centred in the screen. */
 .wl-stage {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   text-align: center;
-  padding: clamp(28px, 5vh, 64px) 0 16px;
+  padding: clamp(24px, 4vh, 56px) 0 16px;
 }
 
 .wl-hero {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 28px; /* the least gap above the card, which sits low so the towers show */
+  margin-bottom: 28px;
 }
 
 /* Liquid glass over the photo: real backdrop blur, gold hairline edge. */
@@ -181,16 +184,17 @@ html:has(.wl-root) body {
   background: linear-gradient(145deg, var(--wl-glass-spec) 0%, transparent 40%);
 }
 
-/* Lock-up: gold eyes + wordmark in one row, centred on each other. */
+/* Lock-up: the app icon (vector, its own black tile, iOS corner) + wordmark in one row, centred on each other. */
 .wl-lockup {
   display: flex;
   align-items: center;
-  gap: calc(var(--wl-cap) * 0.6);
+  gap: calc(var(--wl-cap) * 0.64);
 }
-.wl-mark {
+.wl-icon {
   display: block;
-  height: calc(var(--wl-cap) * 1.3);
-  width: calc(var(--wl-cap) * 1.3 * 200 / 97); /* the mark's viewBox is 200 x 97 */
+  width: calc(var(--wl-cap) / 0.45);
+  height: calc(var(--wl-cap) / 0.45);
+  border-radius: 22.37%;
 }
 .wl-wordmark {
   display: block;
@@ -219,10 +223,11 @@ html:has(.wl-root) body {
   text-shadow: 0 1px 16px rgb(0 0 0 / 0.4);
 }
 
-/* Wide landscape screens: headline top-left over the sky, card on the right; the towers stay visible between. */
+/* Wide landscape screens: headline and card side by side, tops aligned, high over the sky; the towers show below. */
 @media (min-width: 1024px) and (min-aspect-ratio: 4/3) {
   .wl-root {
-    --wl-pool: 24% 16%;
+    --wl-pool: 30% 20%;
+    --wl-pool-size: 85% 30%;
     --wl-side: linear-gradient(
       90deg,
       rgb(var(--wl-ink-rgb) / var(--wl-scrim-side)) 0%,
@@ -232,20 +237,20 @@ html:has(.wl-root) body {
   }
   .wl-stage {
     flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    gap: 64px;
+    align-items: flex-start;
+    justify-content: center;
+    gap: clamp(48px, 6vw, 112px);
     width: 100%;
     max-width: 1280px;
     margin-inline: auto;
-    padding: clamp(40px, 7vh, 80px) clamp(8px, 3vw, 48px) 24px;
+    padding: clamp(56px, 12vh, 128px) clamp(8px, 3vw, 48px) 24px;
     text-align: left;
   }
   .wl-hero {
-    align-self: flex-start;
     align-items: flex-start;
     max-width: 700px;
     margin-bottom: 0;
+    padding-top: 8px;
   }
   .wl-title {
     font-size: clamp(40px, 3.6vw, 60px); /* one line beside the 420 px card */
@@ -260,7 +265,6 @@ html:has(.wl-root) body {
 .wl-card {
   width: 100%;
   max-width: 420px;
-  margin-top: auto;
   padding: clamp(18px, 4.6vw, 24px);
   border-radius: 26px;
   text-align: left;
@@ -433,7 +437,7 @@ html:has(.wl-root) body {
 .wl-done {
   text-align: center;
   padding: 6px 0 2px;
-  animation: wl-rise-plate 700ms var(--wl-ease) both;
+  animation: wl-rise 700ms var(--wl-ease) backwards;
 }
 .wl-check {
   display: inline-grid;
@@ -490,7 +494,7 @@ html:has(.wl-root) body {
 
 /* ── Entrance: photo settles; lock-up → title → line → card → footer ─ */
 .wl-in {
-  animation: wl-rise 900ms var(--wl-ease) both;
+  animation: wl-rise 900ms var(--wl-ease) backwards; /* nothing held on the text once it lands */
 }
 .wl-lockup {
   animation-delay: 80ms;
@@ -505,24 +509,21 @@ html:has(.wl-root) body {
   animation-delay: 320ms;
 }
 .wl-card {
-  animation-name: wl-rise-plate;
   animation-delay: 420ms;
 }
 .wl-foot {
   animation-delay: 560ms;
 }
 
+/* Text stays sharp: entrances use opacity + translate only and settle at transform: none (no blur, no scale). */
 @keyframes wl-rise {
   from {
     opacity: 0;
-    transform: translateY(24px);
-    filter: blur(8px);
+    transform: translateY(20px);
   }
-}
-@keyframes wl-rise-plate {
-  from {
-    opacity: 0;
-    transform: translateY(16px) scale(0.96);
+  to {
+    opacity: 1;
+    transform: none;
   }
 }
 @keyframes wl-settle {
