@@ -4,13 +4,8 @@ import { QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import NotFound from "@/pages/not-found";
-import ComingSoonPage from "@/pages/ComingSoonPage";
-import HomePage from "@/pages/HomePage";
-import ServicesPage from "@/pages/ServicesPage";
-import AboutPage from "@/pages/AboutPage";
-import ContactPage from "@/pages/ContactPage";
-import HowItWorksPage from "@/pages/HowItWorksPage";
-import { PrivacyPage, TermsPage } from "@/pages/LegalPages";
+import WaitlistPage from "@/pages/WaitlistPage";
+import { PrivacyPage, TermsPage, OfferTermsPage } from "@/pages/LegalPages";
 import ReferralPage from "@/pages/ReferralPage";
 
 // Target Pages
@@ -23,14 +18,16 @@ import MembershipPage from "@/pages/targets/Membership";
 function Router() {
   return (
     <Switch>
-      <Route path="/" component={ComingSoonPage}/>
-      <Route path="/home" component={HomePage}/>
-      <Route path="/about" component={AboutPage}/>
-      <Route path="/services" component={ServicesPage}/>
-      <Route path="/contact" component={ContactPage}/>
-      <Route path="/how-it-works" component={HowItWorksPage}/>
+      <Route path="/" component={WaitlistPage}/>
+      {/* Old site pages carried the GoHighLevel "50% OFF Lifetime" sign-up: all go to the waitlist (files kept). */}
+      <Route path="/home"><Redirect to="/" replace /></Route>
+      <Route path="/about"><Redirect to="/" replace /></Route>
+      <Route path="/services"><Redirect to="/" replace /></Route>
+      <Route path="/contact"><Redirect to="/" replace /></Route>
+      <Route path="/how-it-works"><Redirect to="/" replace /></Route>
       <Route path="/privacy" component={PrivacyPage}/>
       <Route path="/terms" component={TermsPage}/>
+      <Route path="/offer-terms" component={OfferTermsPage}/>
       <Route path="/privacy-policy"><Redirect to="/privacy" replace /></Route>
       {/* Refer a friend (Points v2): the invite QR's link → open the app on the code. */}
       <Route path="/r/:code" component={ReferralPage}/>

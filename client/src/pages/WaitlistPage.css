@@ -1,0 +1,556 @@
+/* Waitlist cover — scoped to .wl-root.
+   The skyline photo sits under an ink scrim in BOTH modes, so the text on the photo (wordmark, headline, footer)
+   is always light. Light/dark (prefers-color-scheme) switches the scrim's warmth and the glass material:
+   light = frosted white glass with dark text, dark = smoked glass with light text. */
+
+.wl-root {
+  --wl-gold-rgb: 201 169 110;
+  --wl-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --wl-cap: 22px; /* wordmark cap height = 45% of the 48 px app icon (Abdul, 5 Nov) */
+
+  /* On the photo (both modes) */
+  --wl-ink-rgb: 26 20 14; /* light mode: a warm umber veil, a touch lighter than dark mode's ink */
+  --wl-scrim-top: 0.46;
+  --wl-scrim-mid: 0.18;
+  --wl-scrim-low: 0.4;
+  --wl-scrim-bottom: 0.82;
+  --wl-scrim-hero: 0.84;
+  --wl-scrim-side: 0.52;
+  --wl-pool: 50% 24%;
+  --wl-pool-size: 115% 26%; /* phones: wider than the screen so both ends of the headline sit in it */
+  --wl-side: linear-gradient(transparent, transparent);
+  --wl-hero-text: #f5efe4;
+  --wl-hero-text-2: #e6ddcc;
+  --wl-hero-link: #e2c690;
+  --wl-wm: #d4b57c;
+  --wl-wm-hi: #f6e6c0;
+
+  /* Glass material + text on it: light mode */
+  --wl-glass-fill: linear-gradient(180deg, rgb(255 252 246 / 0.64), rgb(250 245 236 / 0.74));
+  --wl-glass-blur: 18px;
+  --wl-glass-edge: rgb(var(--wl-gold-rgb) / 0.55);
+  --wl-glass-hl: rgb(255 255 255 / 0.95);
+  --wl-glass-ll: rgb(120 90 40 / 0.1);
+  --wl-glass-shadow: 0 1px 2px rgb(0 0 0 / 0.12), 0 30px 70px -24px rgb(0 0 0 / 0.55);
+  --wl-glass-spec: rgb(255 255 255 / 0.6);
+  --wl-text: #1c1915;
+  --wl-text-2: #3a342c;
+  --wl-muted: #464035;
+  --wl-link: #5c4314;
+  --wl-error: #9f1d17;
+  --wl-error-rgb: 159 29 23;
+  --wl-field: rgb(255 255 255 / 0.92);
+  --wl-field-edge: rgb(60 40 10 / 0.22);
+  --wl-placeholder: #6f675b;
+  --wl-ring: rgb(var(--wl-gold-rgb) / 0.5);
+  --wl-button-a: #d6ba84;
+  --wl-button-b: #bf9d5e;
+  --wl-button-text: #14110d;
+
+  position: relative;
+  isolation: isolate;
+  min-height: 100vh;
+  min-height: 100svh;
+  display: grid;
+  grid-template-rows: 1fr auto;
+  padding: 0 16px;
+  overflow: hidden;
+  background: rgb(var(--wl-ink-rgb));
+  color: var(--wl-hero-text);
+  font-family: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  letter-spacing: normal;
+  -webkit-font-smoothing: antialiased;
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  .wl-root {
+    --wl-ink-rgb: 10 9 8;
+    --wl-scrim-top: 0.5;
+    --wl-scrim-mid: 0.26;
+    --wl-scrim-low: 0.48;
+    --wl-scrim-bottom: 0.88;
+    --wl-scrim-hero: 0.78;
+    --wl-scrim-side: 0.6;
+
+    --wl-glass-fill: linear-gradient(180deg, rgb(24 21 17 / 0.58), rgb(14 12 10 / 0.68));
+    --wl-glass-edge: rgb(var(--wl-gold-rgb) / 0.32);
+    --wl-glass-hl: rgb(255 255 255 / 0.14);
+    --wl-glass-ll: rgb(0 0 0 / 0.4);
+    --wl-glass-shadow: 0 1px 1px rgb(0 0 0 / 0.3), 0 30px 80px -20px rgb(0 0 0 / 0.85),
+      0 0 64px -16px rgb(var(--wl-gold-rgb) / 0.22);
+    --wl-glass-spec: rgb(255 255 255 / 0.1);
+    --wl-text: #ede6d8;
+    --wl-text-2: #d3cabb;
+    --wl-muted: #c0b7a7;
+    --wl-link: #dcc08a;
+    --wl-error: #ff9d91;
+    --wl-error-rgb: 255 157 145;
+    --wl-field: rgb(0 0 0 / 0.38);
+    --wl-field-edge: rgb(255 255 255 / 0.18);
+    --wl-placeholder: #9d9486;
+    color-scheme: dark;
+  }
+}
+
+/* iOS overscroll shows the body behind the page: ink, like the scrim. */
+html:has(.wl-root),
+html:has(.wl-root) body {
+  background-color: #0a0908;
+}
+
+/* ── Photo, scrim, grain (fixed behind everything) ───────── */
+.wl-photo,
+.wl-scrim,
+.wl-grain {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+}
+.wl-photo {
+  z-index: -3;
+}
+.wl-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 35% 50%; /* Deansgate Square, left of centre. A new photo may need new framing here. */
+  animation: wl-settle 2400ms var(--wl-ease) both;
+}
+@media (max-aspect-ratio: 3/4) {
+  .wl-photo img {
+    object-position: 50% 55%;
+  }
+}
+
+/* Ink scrim: a light veil so the skyline reads, a darker pool behind the headline, and a darker foot for the footer. */
+.wl-scrim {
+  z-index: -2;
+  background:
+    var(--wl-side),
+    radial-gradient(ellipse var(--wl-pool-size) at var(--wl-pool), rgb(var(--wl-ink-rgb) / var(--wl-scrim-hero)), transparent 72%),
+    linear-gradient(
+      180deg,
+      rgb(var(--wl-ink-rgb) / var(--wl-scrim-top)) 0%,
+      rgb(var(--wl-ink-rgb) / var(--wl-scrim-mid)) 38%,
+      rgb(var(--wl-ink-rgb) / var(--wl-scrim-low)) 80%,
+      rgb(var(--wl-ink-rgb) / var(--wl-scrim-bottom)) 100%
+    );
+}
+
+.wl-grain {
+  z-index: -1;
+  opacity: 0.06;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 200px 200px;
+}
+
+/* ── Stage ──────────────────────────────────────────────── */
+/* Lock-up, headline and card read as one group: fixed gaps inside, centred in the screen. */
+.wl-stage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: clamp(24px, 4vh, 56px) 0 16px;
+}
+
+.wl-hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 28px;
+}
+
+/* Liquid glass over the photo: real backdrop blur, gold hairline edge. */
+.wl-card {
+  position: relative;
+  background: var(--wl-glass-fill);
+  border: 1px solid var(--wl-glass-edge);
+  box-shadow:
+    inset 0 1px 0 var(--wl-glass-hl),
+    inset 0 -1px 0 var(--wl-glass-ll),
+    var(--wl-glass-shadow);
+  -webkit-backdrop-filter: blur(var(--wl-glass-blur, 18px)) saturate(160%);
+  backdrop-filter: blur(var(--wl-glass-blur, 18px)) saturate(160%);
+}
+.wl-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background: linear-gradient(145deg, var(--wl-glass-spec) 0%, transparent 40%);
+}
+
+/* Lock-up: the app icon (vector, its own black tile, iOS corner) + wordmark in one row, centred on each other. */
+.wl-lockup {
+  display: flex;
+  align-items: center;
+  gap: calc(var(--wl-cap) * 0.64);
+}
+.wl-icon {
+  display: block;
+  width: calc(var(--wl-cap) / 0.45);
+  height: calc(var(--wl-cap) / 0.45);
+  border-radius: 22.37%;
+}
+.wl-wordmark {
+  display: block;
+  height: var(--wl-cap);
+  width: calc(var(--wl-cap) * 8.42); /* the wordmark's viewBox is 842 x 100 */
+  background: linear-gradient(100deg, var(--wl-wm) 40%, var(--wl-wm-hi) 50%, var(--wl-wm) 60%) 100% 0 / 250% 100% no-repeat;
+  -webkit-mask: url("../assets/spidxr-wordmark.svg") center / contain no-repeat;
+  mask: url("../assets/spidxr-wordmark.svg") center / contain no-repeat;
+}
+
+.wl-title {
+  margin: clamp(18px, 3vh, 26px) 0 0;
+  font-size: clamp(26px, 7.6vw, 56px); /* one line: fits 360 px at 27.4 px */
+  font-weight: 500;
+  line-height: 1.05;
+  letter-spacing: -0.035em;
+  white-space: nowrap;
+  text-shadow: 0 2px 28px rgb(0 0 0 / 0.35);
+}
+
+.wl-sub {
+  margin: 12px 0 0;
+  font-size: clamp(16px, 1rem + 0.3vw, 19px);
+  line-height: 1.5;
+  color: var(--wl-hero-text);
+  text-shadow: 0 1px 16px rgb(0 0 0 / 0.4);
+}
+
+/* Wide landscape screens: headline and card side by side, tops aligned, high over the sky; the towers show below. */
+@media (min-width: 1024px) and (min-aspect-ratio: 4/3) {
+  .wl-root {
+    --wl-pool: 30% 20%;
+    --wl-pool-size: 85% 30%;
+    --wl-side: linear-gradient(
+      90deg,
+      rgb(var(--wl-ink-rgb) / var(--wl-scrim-side)) 0%,
+      rgb(var(--wl-ink-rgb) / calc(var(--wl-scrim-side) * 0.8)) 34%,
+      transparent 60%
+    );
+  }
+  .wl-stage {
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+    gap: clamp(48px, 6vw, 112px);
+    width: 100%;
+    max-width: 1280px;
+    margin-inline: auto;
+    padding: clamp(56px, 12vh, 128px) clamp(8px, 3vw, 48px) 24px;
+    text-align: left;
+  }
+  .wl-hero {
+    align-items: flex-start;
+    max-width: 700px;
+    margin-bottom: 0;
+    padding-top: 8px;
+  }
+  .wl-title {
+    font-size: clamp(40px, 3.6vw, 60px); /* one line beside the 420 px card */
+  }
+  .wl-card {
+    flex: none;
+    margin-top: 0;
+  }
+}
+
+/* ── Form card ──────────────────────────────────────────── */
+.wl-card {
+  width: 100%;
+  max-width: 420px;
+  padding: clamp(18px, 4.6vw, 24px);
+  border-radius: 26px;
+  text-align: left;
+  color: var(--wl-text);
+}
+.wl-card > * {
+  position: relative; /* above the specular sheen */
+}
+
+.wl-field + .wl-field {
+  margin-top: 10px;
+}
+.wl-field label {
+  display: block;
+  margin-bottom: 4px;
+  font-size: 13px;
+  font-weight: 500;
+}
+.wl-field input {
+  display: block;
+  width: 100%;
+  height: 44px;
+  padding: 0 14px;
+  border: 1px solid var(--wl-field-edge);
+  border-radius: 14px;
+  background: var(--wl-field);
+  color: var(--wl-text);
+  font: inherit;
+  font-size: 16px; /* no iOS zoom on focus */
+  outline: 2px solid transparent; /* shows in forced-colors mode, where the ring below is dropped */
+  transition:
+    border-color 200ms ease,
+    box-shadow 200ms ease;
+}
+.wl-field input::placeholder {
+  color: var(--wl-placeholder);
+  opacity: 1;
+}
+.wl-field input:focus-visible {
+  border-color: rgb(var(--wl-gold-rgb));
+  box-shadow: 0 0 0 4px var(--wl-ring);
+}
+.wl-field input[aria-invalid="true"] {
+  border-color: var(--wl-error);
+}
+.wl-field input[aria-invalid="true"]:focus-visible {
+  box-shadow: 0 0 0 4px rgb(var(--wl-error-rgb) / 0.22);
+}
+.wl-error {
+  margin: 7px 0 0;
+  font-size: 14px;
+  line-height: 1.4;
+  color: var(--wl-error);
+}
+
+.wl-hp {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.wl-consent {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-top: 12px;
+  font-size: 14px;
+  line-height: 1.4;
+  cursor: pointer;
+}
+.wl-consent input {
+  flex: none;
+  width: 20px;
+  height: 20px;
+  margin: 1px 0 0;
+  accent-color: rgb(var(--wl-gold-rgb));
+  cursor: pointer;
+}
+.wl-consent input:focus-visible {
+  outline: 2px solid var(--wl-link);
+  outline-offset: 3px;
+}
+
+.wl-form-error {
+  margin: 16px 0 0;
+  padding: 10px 14px;
+  border-radius: 12px;
+  background: rgb(var(--wl-error-rgb) / 0.1);
+  color: var(--wl-error);
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.wl-button {
+  display: block;
+  width: 100%;
+  height: 48px;
+  margin-top: 12px;
+  border: 0;
+  border-radius: 999px;
+  background: linear-gradient(180deg, var(--wl-button-a), var(--wl-button-b));
+  color: var(--wl-button-text);
+  font: inherit;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 0.45),
+    0 10px 28px -12px rgb(var(--wl-gold-rgb) / 0.75);
+  transition:
+    transform 180ms var(--wl-ease),
+    box-shadow 220ms ease,
+    filter 220ms ease;
+}
+.wl-button:hover:not(:disabled) {
+  transform: translateY(-1px);
+  filter: brightness(1.05);
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 0.5),
+    0 14px 34px -12px rgb(var(--wl-gold-rgb) / 0.9);
+}
+.wl-button:active:not(:disabled) {
+  transform: scale(0.985);
+}
+.wl-button:focus-visible {
+  outline: 2px solid var(--wl-link);
+  outline-offset: 3px;
+}
+.wl-button:disabled {
+  opacity: 0.7;
+  cursor: progress;
+}
+
+.wl-legal {
+  margin: 10px 0 0;
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--wl-muted);
+}
+.wl-legal + .wl-legal {
+  margin-top: 6px;
+}
+.wl-legal a,
+.wl-foot a {
+  color: var(--wl-link);
+  font-weight: 500;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  border-radius: 4px;
+}
+.wl-legal a:focus-visible,
+.wl-foot a:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}
+
+/* Company line: in the footer, on the photo. */
+.wl-fine {
+  margin: 0 0 2px;
+  font-size: 11.5px;
+  line-height: 1.5;
+  color: var(--wl-hero-text-2);
+  text-wrap: balance;
+}
+
+/* ── Success ────────────────────────────────────────────── */
+.wl-done {
+  text-align: center;
+  padding: 6px 0 2px;
+  animation: wl-rise 700ms var(--wl-ease) backwards;
+}
+.wl-check {
+  display: inline-grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 1px solid rgb(var(--wl-gold-rgb) / 0.55);
+  background: rgb(var(--wl-gold-rgb) / 0.16);
+  color: var(--wl-link);
+}
+.wl-done h2 {
+  margin: 14px 0 0;
+  font-size: 28px;
+  font-weight: 500;
+  letter-spacing: -0.025em;
+  line-height: 1.15;
+  outline: none; /* focused by script so screen readers announce it */
+}
+.wl-done p {
+  margin: 10px 0 0;
+  font-size: 15.5px;
+  line-height: 1.55;
+  color: var(--wl-text-2);
+  text-wrap: pretty;
+}
+.wl-done strong {
+  color: var(--wl-text);
+  font-weight: 500;
+}
+
+/* ── Footer (on the photo) ──────────────────────────────── */
+.wl-foot {
+  padding: 4px 0 max(16px, env(safe-area-inset-bottom));
+  font-size: 13px;
+  text-align: center;
+}
+.wl-foot nav {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+.wl-foot a {
+  display: inline-block;
+  padding: 6px 8px;
+  color: var(--wl-hero-link);
+  text-decoration-color: transparent;
+  transition: text-decoration-color 200ms ease;
+}
+.wl-foot a:hover,
+.wl-foot a:focus-visible {
+  text-decoration-color: currentColor;
+}
+
+/* ── Entrance: photo settles; lock-up → title → line → card → footer ─ */
+.wl-in {
+  animation: wl-rise 900ms var(--wl-ease) backwards; /* nothing held on the text once it lands */
+}
+.wl-lockup {
+  animation-delay: 80ms;
+}
+.wl-wordmark {
+  animation: wl-sheen 2000ms ease-in-out 1000ms both;
+}
+.wl-title {
+  animation-delay: 240ms;
+}
+.wl-sub {
+  animation-delay: 320ms;
+}
+.wl-card {
+  animation-delay: 420ms;
+}
+.wl-foot {
+  animation-delay: 560ms;
+}
+
+/* Text stays sharp: entrances use opacity + translate only and settle at transform: none (no blur, no scale). */
+@keyframes wl-rise {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes wl-settle {
+  from {
+    transform: scale(1.06);
+  }
+}
+@keyframes wl-sheen {
+  to {
+    background-position: 0 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wl-root,
+  .wl-root * {
+    animation: none !important;
+    transition: none !important;
+  }
+  .wl-button:hover:not(:disabled),
+  .wl-button:active:not(:disabled) {
+    transform: none;
+  }
+}
+
+@media (forced-colors: active) {
+  .wl-wordmark {
+    forced-color-adjust: none;
+  }
+}
