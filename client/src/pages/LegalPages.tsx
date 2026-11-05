@@ -3,7 +3,7 @@ import { Link } from "wouter";
 import { motion } from "framer-motion";
 
 // Shown on both pages. Update on every change to either document.
-const LAST_UPDATED = "12 October 2026";
+const LAST_UPDATED = "5 November 2026";
 const CONTACT = "support@spidxr.co.uk";
 
 // Privacy Policy, section 7 — mirrors RETENTION in the app backend (convex/retention.ts, 30 Sep 2026).
@@ -63,7 +63,7 @@ function Table({ head, rows }: { head: string[]; rows: ReactNode[][] }) {
   );
 }
 
-function LegalShell({ title, active, children }: { title: string; active: "privacy" | "terms"; children: ReactNode }) {
+function LegalShell({ title, active, children }: { title: string; active: "privacy" | "terms" | "offer"; children: ReactNode }) {
   useEffect(() => {
     document.title = `${title} | SPIDXR`;
     window.scrollTo(0, 0);
@@ -299,7 +299,36 @@ export function PrivacyPage() {
         We do not knowingly collect data from under-18s.
       </p>
 
-      <h2>10. Changes to this policy</h2>
+      <h2>10. The website waitlist</h2>
+      <p>If you join the waitlist on our website:</p>
+      <ul>
+        <li>
+          <strong>What we collect:</strong> your email address and mobile number, whether you ticked the box to hear when
+          SPIDXR opens, which of our links or QR codes you came from, and when you joined. Your internet (IP) address is
+          used only to limit repeated sign-ups.
+        </li>
+        <li>
+          <strong>Why:</strong> to tell you when SPIDXR opens, and to add your welcome gift when you join the app with the
+          same email or mobile number.
+        </li>
+        <li>
+          <strong>Lawful basis:</strong> consent, Art 6(1)(a), and PECR for launch messages by email or text: we send them
+          only if you ticked the box. Legitimate interests, Art 6(1)(f), for running the list, matching your welcome gift
+          and preventing spam.
+        </li>
+        <li><strong>Where it is kept:</strong> in our database, Convex, hosted in the EU.</li>
+        <li><strong>Who sends our messages:</strong> our email and text provider, [PROVIDER — to be confirmed].</li>
+        <li>
+          <strong>How long:</strong> if you never join the app, we delete your waitlist details 12 months after you joined
+          the list.
+        </li>
+        <li>
+          <strong>Unsubscribe any time</strong> using the link in any message we send, or by emailing <Mail />. We then
+          keep only a scrambled (hashed) copy of your email and number, so we never message you again.
+        </li>
+      </ul>
+
+      <h2>11. Changes to this policy</h2>
       <p>
         We will update this policy when our processing changes and post the new version here with a revised "last
         updated" date.
@@ -480,6 +509,57 @@ export function TermsPage() {
       <p>
         These Terms are governed by the law of <strong>England and Wales</strong>, and disputes are subject to the courts
         of England and Wales.
+      </p>
+    </LegalShell>
+  );
+}
+
+// Welcome gift for people who join the website waitlist. DRAFT: needs Abdul + #compliance review; set the expiry before go-live.
+export function OfferTermsPage() {
+  return (
+    <LegalShell title="Waitlist Offer Terms" active="offer">
+      <p>
+        These terms explain the welcome gift for people who join the SPIDXR waitlist. They sit alongside our{" "}
+        <Link href="/terms">Terms of Service</Link> and <Link href="/privacy">Privacy Policy</Link>.
+      </p>
+
+      <h2>1. The welcome gift</h2>
+      <ul>
+        <li>
+          <strong>100 SPIDXR Points</strong>, added to your SPIDXR app account. Points work as described in section 9 of our{" "}
+          <Link href="/terms">Terms of Service</Link>.
+        </li>
+        <li>
+          <strong>1 free task.</strong> We waive the whole service price of one task. Anything a runner buys for you on
+          that task, such as shopping, is still paid by you.
+        </li>
+      </ul>
+
+      <h2>2. How to get it</h2>
+      <p>
+        Join the waitlist, then create a SPIDXR app account using the <strong>same email address or mobile number</strong>{" "}
+        you joined with. Your gift is waiting in that account.
+      </p>
+
+      <h2>3. The rules</h2>
+      <ul>
+        <li>One welcome gift per person, however many times you join the list.</li>
+        <li>The gift has no cash value, can&apos;t be exchanged for cash and can&apos;t be transferred to anyone else.</li>
+        <li>
+          Expiry: <strong>[EXPIRY — Abdul to set]</strong>
+        </li>
+      </ul>
+
+      <h2>4. Changes to this offer</h2>
+      <p>
+        We may end or change this offer with reasonable notice. That doesn&apos;t affect points or a free task already
+        added to your account.
+      </p>
+
+      <h2>5. Who we are</h2>
+      <p>
+        SPIDXR is a trading name of <strong>SPIDXR Vitality Innovations Ltd</strong> (16118329), registered office 128 City
+        Road, London, EC1V 2NX. Questions: <Mail />.
       </p>
     </LegalShell>
   );
