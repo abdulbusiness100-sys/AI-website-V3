@@ -313,6 +313,68 @@ html:has(.wl-root) body {
 .wl-field input[aria-invalid="true"]:focus-visible {
   box-shadow: 0 0 0 4px rgb(var(--wl-error-rgb) / 0.22);
 }
+/* Phone row: country code (native select under a flag + code face) beside the number, same field look. */
+.wl-phone-row {
+  display: flex;
+  gap: 8px;
+}
+.wl-phone-row input {
+  flex: 1;
+  min-width: 0;
+}
+.wl-cc {
+  position: relative;
+  flex: none;
+}
+.wl-cc-face {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  height: 44px;
+  padding: 0 10px 0 12px;
+  border: 1px solid var(--wl-field-edge);
+  border-radius: 14px;
+  background: var(--wl-field);
+  color: var(--wl-text);
+  font-size: 16px;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  transition:
+    border-color 200ms ease,
+    box-shadow 200ms ease;
+}
+.wl-cc-flag {
+  font-size: 18px;
+  line-height: 1;
+}
+.wl-cc-face svg {
+  margin-left: 2px;
+  color: var(--wl-placeholder);
+}
+.wl-cc select {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  font-size: 16px; /* no iOS zoom on focus */
+  cursor: pointer;
+  -webkit-appearance: none;
+  appearance: none;
+}
+.wl-cc:has(select:focus-visible) .wl-cc-face {
+  border-color: rgb(var(--wl-gold-rgb));
+  box-shadow: 0 0 0 4px var(--wl-ring);
+}
+.wl-cc:hover .wl-cc-face {
+  border-color: rgb(var(--wl-gold-rgb) / 0.7);
+}
+@media (forced-colors: active) {
+  .wl-cc select {
+    opacity: 1; /* show the real control where custom faces aren't drawn */
+  }
+}
+
 .wl-error {
   margin: 7px 0 0;
   font-size: 14px;
