@@ -1,7 +1,8 @@
 import { useEffect, useRef, useState, type FormEvent } from "react";
 import { Link } from "wouter";
 import appIconUrl from "@/assets/spidxr-app-icon.svg";
-import { cleanEmail, cleanMobile, cleanSource, EMAIL_ERROR, MOBILE_ERROR } from "@/lib/waitlist";
+import { cleanEmail, cleanSource, EMAIL_ERROR, phoneError, toE164 } from "@/lib/waitlist";
+import { countryByIso, OTHER_COUNTRIES, TOP_COUNTRIES, type Country } from "@/lib/countries";
 import "./WaitlistPage.css";
 
 // The app's Convex HTTP route (SPIDXRAPP#133). A *.convex.site origin is public, so production is the default.
@@ -27,6 +28,8 @@ export default function WaitlistPage() {
   const doneRef = useRef<HTMLHeadingElement>(null);
   const submitted = useRef(false);
   const [values, setValues] = useState({ email: "", phone: "" });
+  const [country, setCountry] = useState("GB");
+  const dial = countryByIso(country).dial;
   const [consent, setConsent] = useState(false);
   const [honeypot, setHoneypot] = useState("");
   const [errors, setErrors] = useState<Errors>({});
@@ -55,7 +58,7 @@ export default function WaitlistPage() {
     if (status === "sending") return;
     const found: Errors = {
       email: cleanEmail(values.email) ? undefined : EMAIL_ERROR,
-      phone: cleanMobile(values.phone) ? undefined : MOBILE_ERROR,
+      phone: toE164(dial, values.phone) ? undefined : phoneError(dial, values.phone),
     };
     if (found.email || found.phone) return fail(found);
 
@@ -68,7 +71,7 @@ export default function WaitlistPage() {
         headers: { "content-type": "application/json" },
         body: JSON.stringify({
           email: values.email.trim(),
-          phone: values.phone.trim(),
+          phone: toE164(dial, values.phone),
           consentLaunchMessages: consent,
           source: cleanSource(new URLSearchParams(window.location.search).get("s")),
           website: honeypot,
@@ -174,7 +177,36 @@ export default function WaitlistPage() {
               </div>
               <div className="wl-field">
                 <label htmlFor="wl-phone">Mobile number</label>
-                <input {...input("phone")} type="tel" inputMode="tel" autoComplete="tel" placeholder="07700 900123" />
+                <div className="wl-phone-row">
+                  {/* Native select (iOS wheel, keyboard, screen readers), invisible over a face showing flag + code. */}
+                  <div className="wl-cc">
+                    <span className="wl-cc-face" aria-hidden="true">
+                      <span className="wl-cc-flag">{countryByIso(country).flag}</span>+{dial}
+                      <svg viewBox="0 0 12 12" width="10" height="10" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M2.5 4.5 6 8l3.5-3.5" />
+                      </svg>
+                    </span>
+                    <select
+                      aria-label="Country code"
+                      name="country"
+                      value={country}
+                      onChange={(e) => {
+                        setCountry(e.target.value);
+                        if (errors.phone) setErrors((x) => ({ ...x, phone: undefined }));
+                      }}
+                    >
+                      <optgroup label="Most used">{TOP_COUNTRIES.map(countryOption)}</optgroup>
+                      <optgroup label="All countries">{OTHER_COUNTRIES.map(countryOption)}</optgroup>
+                    </select>
+                  </div>
+                  <input
+                    {...input("phone")}
+                    type="tel"
+                    inputMode="tel"
+                    autoComplete="tel"
+                    placeholder={country === "GB" ? "07700 900123" : undefined}
+                  />
+                </div>
                 {error("phone")}
               </div>
 
@@ -223,3 +255,9 @@ export default function WaitlistPage() {
     </div>
   );
 }
+
+const countryOption = (c: Country) => (
+  <option key={c.iso} value={c.iso}>
+    {`${c.flag} ${c.name} +${c.dial}`}
+  </option>
+);
