@@ -17,7 +17,6 @@ import diningImage from "@assets/download_(27)_1765903727158.png";
 import cleaningImage from "@assets/download_(28)_1765903752353.png";
 import packageImage from "@assets/download_(29)_1765903970860.png";
 import foodDeliveryImage from "@assets/download_(30)_1765903990644.png";
-import pharmacyImage from "@assets/download_(31)_1765904153789.png";
 import privateChefImage from "@assets/download_(33)_1765904361219.png";
 import servicesWatermark from "@assets/download_(35)_1765922143678.png";
 
@@ -241,21 +240,6 @@ const services = [
     image: "https://images.unsplash.com/photo-1542838132-92c53300491e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
   },
   {
-    id: 14,
-    title: "Pharmacy & Medical Support",
-    description: "Pharmacy pickups, prescription management, medical appointment coordination, and health-related errands.",
-    icon: "pills",
-    features: [
-      "Prescription pickup",
-      "Medication management",
-      "Medical appointments",
-      "Health consultation coordination",
-      "Insurance coordination"
-    ],
-    premium: false,
-    image: pharmacyImage
-  },
-  {
     id: 15,
     title: "Private Chef Service",
     description: "Bespoke culinary experiences with personalized meal planning, nutritional customization, and optional assigned personal assistant for premium lifestyle management.",
@@ -269,21 +253,6 @@ const services = [
     ],
     premium: true,
     image: privateChefImage
-  },
-  {
-    id: 16,
-    title: "Childcare & Family Services",
-    description: "Reliable childcare coordination, school pickup assistance, and family event management services.",
-    icon: "child",
-    features: [
-      "Childcare coordination",
-      "School pickup service",
-      "Activity enrollment",
-      "Family event planning",
-      "Emergency backup care"
-    ],
-    premium: false,
-    image: "https://images.unsplash.com/photo-1503454537688-e47a34cbb798?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
   }
 ];
 
