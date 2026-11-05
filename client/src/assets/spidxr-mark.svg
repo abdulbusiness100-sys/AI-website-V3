@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 50 200 97"><title>SPIDXR</title><defs>
+<!-- The app icon's eyes (PHASE_2/APP_ICON/icon-dark.svg): same paths, gradients and strokes, without the tile.
+     The icon's 4-unit black line between rim and lens is cut out (mask) so the photo shows through it. -->
+<linearGradient id="goldLens" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#D4B47A"/><stop offset=".55" stop-color="#A88546"/><stop offset="1" stop-color="#6E5530"/></linearGradient>
+<linearGradient id="goldRim" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#E2C68F"/><stop offset="1" stop-color="#A88546"/></linearGradient>
+<path id="eyeR" d="M13,22 C28,-4 46,-33 70,-46 C80,-52 85,-31 82,-14 C80,-2 77,6 71,11 C58,20 32,26 13,22 Z"/>
+<g id="eyes" stroke-linejoin="round"><use href="#eyeR" transform="translate(-4 0)"/><use href="#eyeR" transform="translate(4 0) scale(-1 1)"/></g>
+<mask id="gap" maskUnits="userSpaceOnUse" x="0" y="0" width="200" height="200"><rect width="200" height="200" fill="#fff"/><g transform="translate(100 112) scale(1.05)" fill="none" stroke="#000" stroke-width="4"><use href="#eyes"/></g></mask>
+</defs><g mask="url(#gap)"><g transform="translate(100 112) scale(1.05)"><g fill="none" stroke="url(#goldRim)" stroke-width="10"><use href="#eyes"/></g><g fill="url(#goldLens)"><use href="#eyes"/></g></g></g></svg>

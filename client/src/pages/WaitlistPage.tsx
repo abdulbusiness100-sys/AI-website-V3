@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState, type FormEvent } from "react";
 import { Link } from "wouter";
-import iconLight from "@/assets/app-icon-light.webp";
-import iconDark from "@/assets/app-icon-dark.webp";
+import markUrl from "@/assets/spidxr-mark.svg";
 import { cleanEmail, cleanMobile, cleanSource, EMAIL_ERROR, MOBILE_ERROR } from "@/lib/waitlist";
 import "./WaitlistPage.css";
 
@@ -102,7 +101,8 @@ export default function WaitlistPage() {
 
   return (
     <div className="wl-root">
-      {/* Deansgate skyline, Mylo Kaye: Unsplash NXtGjC7osPs (desktop), Pexels 29801941 (phone). Licences in the PR. */}
+      {/* Deansgate skyline, Mylo Kaye: Unsplash NXtGjC7osPs (desktop), Pexels 29801941 (phone). Licences in the PR.
+          To change the photo, replace these three files under the same names; framing is object-position in the CSS. */}
       <picture className="wl-photo" aria-hidden="true">
         <source media={PHONE_PHOTO} srcSet="/images/cover/skyline-p1290.webp" width={1290} height={2792} />
         <img
@@ -121,13 +121,11 @@ export default function WaitlistPage() {
 
       <main className="wl-stage">
         <div className="wl-hero">
-          <div className="wl-plate wl-in">
-            <picture>
-              <source srcSet={iconDark} media="(prefers-color-scheme: dark)" />
-              <img className="wl-icon" src={iconLight} alt="" width={384} height={384} decoding="async" />
-            </picture>
+          {/* Lock-up: the gold eyes mark and the wordmark, one row. */}
+          <div className="wl-lockup wl-in" role="img" aria-label="SPIDXR">
+            <img className="wl-mark" src={markUrl} alt="" width={58} height={28} />
+            <span className="wl-wordmark" />
           </div>
-          <div className="wl-wordmark wl-in" role="img" aria-label="SPIDXR" />
           <h1 className="wl-title wl-in">Your personal concierge.</h1>
           <p className="wl-sub wl-in">Be first in when we open.</p>
         </div>
@@ -191,11 +189,11 @@ export default function WaitlistPage() {
               </p>
             </form>
           )}
-          <p className="wl-fine">SPIDXR is a trading name of SPIDXR Vitality Innovations Ltd (16118329).</p>
         </section>
       </main>
 
       <footer className="wl-foot wl-in">
+        <p className="wl-fine">SPIDXR is a trading name of SPIDXR Vitality Innovations Ltd (16118329).</p>
         <nav aria-label="Legal">
           <Link href="/privacy">Privacy</Link>
           <Link href="/terms">Terms</Link>
