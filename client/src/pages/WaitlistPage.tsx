@@ -11,6 +11,8 @@ const WAITLIST_URL: string =
 // Space Grotesk isn't loaded site-wide yet, so this page loads it itself (skipped if already present).
 const FONT_HREF = "https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500&display=swap";
 const GENERIC_ERROR = "Something went wrong, please try again.";
+// Portrait screens get the phone crop. Keep in step with the same query in WaitlistPage.css.
+const PHONE_PHOTO = "(max-aspect-ratio: 3/4)";
 
 type Field = "email" | "phone";
 type Errors = Partial<Record<Field | "form", string>>;
@@ -100,19 +102,35 @@ export default function WaitlistPage() {
 
   return (
     <div className="wl-root">
-      <div className="wl-glow" aria-hidden="true" />
+      {/* Deansgate skyline, Mylo Kaye: Unsplash NXtGjC7osPs (desktop), Pexels 29801941 (phone). Licences in the PR. */}
+      <picture className="wl-photo" aria-hidden="true">
+        <source media={PHONE_PHOTO} srcSet="/images/cover/skyline-p1290.webp" width={1290} height={2792} />
+        <img
+          src="/images/cover/skyline-d1920.webp"
+          srcSet="/images/cover/skyline-d1920.webp 1920w, /images/cover/skyline-d3840.webp 3840w"
+          sizes="100vw"
+          width={1920}
+          height={1080}
+          alt=""
+          decoding="async"
+          {...{ fetchpriority: "high" }}
+        />
+      </picture>
+      <div className="wl-scrim" aria-hidden="true" />
       <div className="wl-grain" aria-hidden="true" />
 
       <main className="wl-stage">
-        <div className="wl-plate wl-in">
-          <picture>
-            <source srcSet={iconDark} media="(prefers-color-scheme: dark)" />
-            <img className="wl-icon" src={iconLight} alt="" width={384} height={384} decoding="async" />
-          </picture>
+        <div className="wl-hero">
+          <div className="wl-plate wl-in">
+            <picture>
+              <source srcSet={iconDark} media="(prefers-color-scheme: dark)" />
+              <img className="wl-icon" src={iconLight} alt="" width={384} height={384} decoding="async" />
+            </picture>
+          </div>
+          <div className="wl-wordmark wl-in" role="img" aria-label="SPIDXR" />
+          <h1 className="wl-title wl-in">Your personal concierge.</h1>
+          <p className="wl-sub wl-in">Be first in when we open.</p>
         </div>
-        <div className="wl-wordmark wl-in" role="img" aria-label="SPIDXR" />
-        <h1 className="wl-title wl-in">Your personal concierge.</h1>
-        <p className="wl-sub wl-in">Be first in when we open.</p>
 
         <section className="wl-card wl-in" aria-label="Join the waitlist">
           {status === "done" ? (

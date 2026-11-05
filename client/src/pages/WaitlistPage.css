@@ -1,38 +1,51 @@
-/* Waitlist home — scoped to .wl-root. Light by default, dark via prefers-color-scheme. */
+/* Waitlist cover — scoped to .wl-root.
+   The skyline photo sits under an ink scrim in BOTH modes, so the text on the photo (wordmark, headline, footer)
+   is always light. Light/dark (prefers-color-scheme) switches the scrim's warmth and the glass material:
+   light = frosted white glass with dark text, dark = smoked glass with light text. */
 
 .wl-root {
   --wl-gold-rgb: 201 169 110;
-  --wl-ground: #f7f3ec;
-  --wl-ground-2: #efe7da;
-  --wl-glow-a: 0.3;
-  --wl-glow-b: 0.14;
-  --wl-text: #1c1915;
-  --wl-text-2: #3f3931;
-  --wl-muted: #5f574b;
-  --wl-link: #7a5c24;
-  --wl-error: #a8201a;
-  --wl-error-rgb: 168 32 26;
-  --wl-wm: #8e6e33;
-  --wl-wm-hi: #d2b47a;
-  --wl-glass-fill: linear-gradient(180deg, rgb(255 255 255 / 0.66), rgb(255 255 255 / 0.4));
-  --wl-glass-edge: rgb(255 255 255 / 0.8);
-  --wl-glass-hl: rgb(255 255 255 / 0.9);
-  --wl-glass-ll: rgb(120 90 40 / 0.08);
-  --wl-glass-shadow: 0 1px 2px rgb(60 40 10 / 0.06), 0 26px 60px -18px rgb(90 64 20 / 0.3);
-  --wl-glass-spec: rgb(255 255 255 / 0.55);
-  --wl-hairline: rgb(60 40 10 / 0.1);
-  --wl-field: rgb(255 255 255 / 0.85);
-  --wl-field-edge: rgb(60 40 10 / 0.18);
-  --wl-placeholder: #81796c;
-  --wl-ring: rgb(var(--wl-gold-rgb) / 0.45);
-  --wl-button-a: #d6ba84;
-  --wl-button-b: #bf9d5e;
-  --wl-button-text: #14110d;
-  --wl-icon-ring: rgb(60 40 10 / 0.12);
-  --wl-grain: 0.05;
   --wl-ease: cubic-bezier(0.22, 1, 0.36, 1);
   --wl-icon: clamp(64px, 17vw, 84px);
   --wl-pad: clamp(12px, 3vw, 14px);
+
+  /* On the photo (both modes) */
+  --wl-ink-rgb: 26 20 14; /* light mode: a warm umber veil, a touch lighter than dark mode's ink */
+  --wl-scrim-top: 0.5;
+  --wl-scrim-mid: 0.32;
+  --wl-scrim-bottom: 0.84;
+  --wl-scrim-hero: 0.64;
+  --wl-scrim-side: 0.52;
+  --wl-pool: 50% 27%;
+  --wl-side: linear-gradient(transparent, transparent);
+  --wl-hero-text: #f5efe4;
+  --wl-hero-text-2: #e6ddcc;
+  --wl-hero-link: #e2c690;
+  --wl-wm: #d4b57c;
+  --wl-wm-hi: #f6e6c0;
+
+  /* Glass material + text on it: light mode */
+  --wl-glass-fill: linear-gradient(180deg, rgb(255 252 246 / 0.74), rgb(250 245 236 / 0.82));
+  --wl-glass-edge: rgb(var(--wl-gold-rgb) / 0.55);
+  --wl-glass-hl: rgb(255 255 255 / 0.95);
+  --wl-glass-ll: rgb(120 90 40 / 0.1);
+  --wl-glass-shadow: 0 1px 2px rgb(0 0 0 / 0.12), 0 30px 70px -24px rgb(0 0 0 / 0.55);
+  --wl-glass-spec: rgb(255 255 255 / 0.6);
+  --wl-text: #1c1915;
+  --wl-text-2: #3a342c;
+  --wl-muted: #464035;
+  --wl-link: #5c4314;
+  --wl-error: #9f1d17;
+  --wl-error-rgb: 159 29 23;
+  --wl-hairline: rgb(60 40 10 / 0.12);
+  --wl-field: rgb(255 255 255 / 0.92);
+  --wl-field-edge: rgb(60 40 10 / 0.22);
+  --wl-placeholder: #6f675b;
+  --wl-ring: rgb(var(--wl-gold-rgb) / 0.5);
+  --wl-button-a: #d6ba84;
+  --wl-button-b: #bf9d5e;
+  --wl-button-text: #14110d;
+  --wl-icon-ring: rgb(60 40 10 / 0.14);
 
   position: relative;
   isolation: isolate;
@@ -42,76 +55,92 @@
   grid-template-rows: 1fr auto;
   padding: 0 16px;
   overflow: hidden;
-  background: linear-gradient(180deg, var(--wl-ground) 0%, var(--wl-ground-2) 100%);
-  color: var(--wl-text);
+  background: rgb(var(--wl-ink-rgb));
+  color: var(--wl-hero-text);
   font-family: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
   letter-spacing: normal;
   -webkit-font-smoothing: antialiased;
-  color-scheme: light dark;
+  color-scheme: light;
 }
 
 @media (prefers-color-scheme: dark) {
   .wl-root {
-    --wl-ground: #0a0908;
-    --wl-ground-2: #110f0c;
-    --wl-glow-a: 0.22;
-    --wl-glow-b: 0.1;
-    --wl-text: #ede6d8;
-    --wl-text-2: #cfc6b6;
-    --wl-muted: #a39a8b;
-    --wl-link: #d4b57c;
-    --wl-error: #ff9d91;
-    --wl-error-rgb: 255 157 145;
-    --wl-wm: #c9a96e;
-    --wl-wm-hi: #f3e1b6;
-    --wl-glass-fill: linear-gradient(180deg, rgb(255 255 255 / 0.09), rgb(255 255 255 / 0.035));
-    --wl-glass-edge: rgb(255 255 255 / 0.12);
-    --wl-glass-hl: rgb(255 255 255 / 0.2);
+    --wl-ink-rgb: 10 9 8;
+    --wl-scrim-top: 0.58;
+    --wl-scrim-mid: 0.4;
+    --wl-scrim-bottom: 0.92;
+    --wl-scrim-hero: 0.62;
+    --wl-scrim-side: 0.6;
+
+    --wl-glass-fill: linear-gradient(180deg, rgb(24 21 17 / 0.62), rgb(14 12 10 / 0.74));
+    --wl-glass-edge: rgb(var(--wl-gold-rgb) / 0.32);
+    --wl-glass-hl: rgb(255 255 255 / 0.14);
     --wl-glass-ll: rgb(0 0 0 / 0.4);
     --wl-glass-shadow: 0 1px 1px rgb(0 0 0 / 0.3), 0 30px 80px -20px rgb(0 0 0 / 0.85),
-      0 0 64px -12px rgb(var(--wl-gold-rgb) / 0.2);
-    --wl-glass-spec: rgb(255 255 255 / 0.12);
+      0 0 64px -16px rgb(var(--wl-gold-rgb) / 0.22);
+    --wl-glass-spec: rgb(255 255 255 / 0.1);
+    --wl-text: #ede6d8;
+    --wl-text-2: #d3cabb;
+    --wl-muted: #b3aa9a;
+    --wl-link: #dcc08a;
+    --wl-error: #ff9d91;
+    --wl-error-rgb: 255 157 145;
     --wl-hairline: rgb(255 255 255 / 0.1);
-    --wl-field: rgb(0 0 0 / 0.35);
-    --wl-field-edge: rgb(255 255 255 / 0.16);
-    --wl-placeholder: #8f8678;
+    --wl-field: rgb(0 0 0 / 0.38);
+    --wl-field-edge: rgb(255 255 255 / 0.18);
+    --wl-placeholder: #9d9486;
     --wl-icon-ring: rgb(255 255 255 / 0.1);
-    --wl-grain: 0.07;
+    color-scheme: dark;
   }
 }
 
-/* iOS overscroll shows the body behind the page: match the ground while this page is mounted. */
+/* iOS overscroll shows the body behind the page: ink, like the scrim. */
 html:has(.wl-root),
 html:has(.wl-root) body {
-  background-color: #f7f3ec;
+  background-color: #0a0908;
 }
-@media (prefers-color-scheme: dark) {
-  html:has(.wl-root),
-  html:has(.wl-root) body {
-    background-color: #0a0908;
+
+/* ── Photo, scrim, grain (fixed behind everything) ───────── */
+.wl-photo,
+.wl-scrim,
+.wl-grain {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+}
+.wl-photo {
+  z-index: -3;
+}
+.wl-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 35% 50%; /* Deansgate Square, left of centre */
+  animation: wl-settle 2400ms var(--wl-ease) both;
+}
+@media (max-aspect-ratio: 3/4) {
+  .wl-photo img {
+    object-position: 50% 55%;
   }
 }
 
-/* ── Atmosphere ─────────────────────────────────────────── */
-.wl-glow,
-.wl-grain {
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  pointer-events: none;
-}
-
-.wl-glow {
+/* Ink scrim: a veil, a darker pool behind the headline, strongest at the bottom where the card sits. */
+.wl-scrim {
+  z-index: -2;
   background:
-    radial-gradient(ellipse 70% 38% at 50% 22%, rgb(var(--wl-gold-rgb) / var(--wl-glow-a)), transparent 70%),
-    radial-gradient(ellipse 50% 34% at 88% 92%, rgb(var(--wl-gold-rgb) / var(--wl-glow-b)), transparent 70%);
-  animation:
-    wl-fade 1600ms var(--wl-ease) both,
-    wl-breathe 10s ease-in-out 1600ms infinite alternate;
+    var(--wl-side),
+    radial-gradient(ellipse 75% 34% at var(--wl-pool), rgb(var(--wl-ink-rgb) / var(--wl-scrim-hero)), transparent 72%),
+    linear-gradient(
+      180deg,
+      rgb(var(--wl-ink-rgb) / var(--wl-scrim-top)) 0%,
+      rgb(var(--wl-ink-rgb) / var(--wl-scrim-mid)) 42%,
+      rgb(var(--wl-ink-rgb) / var(--wl-scrim-bottom)) 100%
+    );
 }
 
 .wl-grain {
-  opacity: var(--wl-grain);
+  z-index: -1;
+  opacity: 0.06;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23n)'/%3E%3C/svg%3E");
   background-size: 200px 200px;
 }
@@ -125,7 +154,13 @@ html:has(.wl-root) body {
   padding: clamp(40px, 8vh, 96px) 0 32px;
 }
 
-/* Liquid-glass surfaces: the icon plate and the form card. */
+.wl-hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Liquid glass over the photo: real backdrop blur, gold hairline edge. */
 .wl-plate,
 .wl-card {
   position: relative;
@@ -135,8 +170,8 @@ html:has(.wl-root) body {
     inset 0 1px 0 var(--wl-glass-hl),
     inset 0 -1px 0 var(--wl-glass-ll),
     var(--wl-glass-shadow);
-  -webkit-backdrop-filter: blur(28px) saturate(170%);
-  backdrop-filter: blur(28px) saturate(170%);
+  -webkit-backdrop-filter: blur(30px) saturate(160%);
+  backdrop-filter: blur(30px) saturate(160%);
 }
 .wl-plate::before,
 .wl-card::before {
@@ -178,13 +213,51 @@ html:has(.wl-root) body {
   line-height: 1.05;
   letter-spacing: -0.035em;
   text-wrap: balance;
+  text-shadow: 0 2px 28px rgb(0 0 0 / 0.35);
 }
 
 .wl-sub {
   margin: 12px 0 0;
   font-size: clamp(16px, 1rem + 0.3vw, 19px);
   line-height: 1.5;
-  color: var(--wl-text-2);
+  color: var(--wl-hero-text-2);
+  text-shadow: 0 1px 16px rgb(0 0 0 / 0.4);
+}
+
+/* Wide landscape screens: headline top-left over the sky, card on the right; the towers stay visible between. */
+@media (min-width: 1024px) and (min-aspect-ratio: 4/3) {
+  .wl-root {
+    --wl-pool: 22% 30%;
+    --wl-side: linear-gradient(
+      90deg,
+      rgb(var(--wl-ink-rgb) / var(--wl-scrim-side)) 0%,
+      rgb(var(--wl-ink-rgb) / calc(var(--wl-scrim-side) * 0.8)) 34%,
+      transparent 60%
+    );
+  }
+  .wl-stage {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 64px;
+    width: 100%;
+    max-width: 1280px;
+    margin-inline: auto;
+    padding: clamp(40px, 7vh, 80px) clamp(8px, 3vw, 48px) 24px;
+    text-align: left;
+  }
+  .wl-hero {
+    align-self: flex-start;
+    align-items: flex-start;
+    max-width: 560px;
+  }
+  .wl-title {
+    font-size: clamp(48px, 4.6vw, 68px);
+  }
+  .wl-card {
+    flex: none;
+    margin-top: 0;
+  }
 }
 
 /* ── Form card ──────────────────────────────────────────── */
@@ -195,6 +268,7 @@ html:has(.wl-root) body {
   padding: clamp(20px, 5.4vw, 28px);
   border-radius: 28px;
   text-align: left;
+  color: var(--wl-text);
 }
 .wl-card > * {
   position: relative; /* above the specular sheen */
@@ -346,7 +420,7 @@ html:has(.wl-root) body {
 }
 .wl-legal a:focus-visible,
 .wl-foot a:focus-visible {
-  outline: 2px solid var(--wl-link);
+  outline: 2px solid currentColor;
   outline-offset: 2px;
 }
 
@@ -371,8 +445,8 @@ html:has(.wl-root) body {
   width: 48px;
   height: 48px;
   border-radius: 50%;
-  border: 1px solid rgb(var(--wl-gold-rgb) / 0.5);
-  background: rgb(var(--wl-gold-rgb) / 0.14);
+  border: 1px solid rgb(var(--wl-gold-rgb) / 0.55);
+  background: rgb(var(--wl-gold-rgb) / 0.16);
   color: var(--wl-link);
 }
 .wl-done h2 {
@@ -395,7 +469,7 @@ html:has(.wl-root) body {
   font-weight: 500;
 }
 
-/* ── Footer ─────────────────────────────────────────────── */
+/* ── Footer (on the photo) ──────────────────────────────── */
 .wl-foot {
   padding: 8px 0 max(20px, env(safe-area-inset-bottom));
   font-size: 13px;
@@ -408,6 +482,7 @@ html:has(.wl-root) body {
 .wl-foot a {
   display: inline-block;
   padding: 6px 8px;
+  color: var(--wl-hero-link);
   text-decoration-color: transparent;
   transition: text-decoration-color 200ms ease;
 }
@@ -416,7 +491,7 @@ html:has(.wl-root) body {
   text-decoration-color: currentColor;
 }
 
-/* ── Entrance: plate → wordmark → title → line → card → footer ─ */
+/* ── Entrance: photo settles; plate → wordmark → title → line → card → footer ─ */
 .wl-in {
   animation: wl-rise 900ms var(--wl-ease) both;
 }
@@ -456,20 +531,14 @@ html:has(.wl-root) body {
     transform: translateY(16px) scale(0.96);
   }
 }
+@keyframes wl-settle {
+  from {
+    transform: scale(1.06);
+  }
+}
 @keyframes wl-sheen {
   to {
     background-position: 0 0;
-  }
-}
-@keyframes wl-fade {
-  from {
-    opacity: 0;
-  }
-}
-@keyframes wl-breathe {
-  to {
-    opacity: 0.82;
-    transform: scale(1.04);
   }
 }
 
