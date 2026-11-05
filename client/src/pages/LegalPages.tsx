@@ -309,7 +309,7 @@ export function PrivacyPage() {
         </li>
         <li>
           <strong>Why:</strong> to tell you when SPIDXR opens, and to add your welcome gift when you join the app with the
-          same email or mobile number.
+          same email address.
         </li>
         <li>
           <strong>Lawful basis:</strong> consent, Art 6(1)(a), and PECR for launch messages by email or text: we send them
@@ -463,8 +463,8 @@ export function TermsPage() {
         never with its own code.
       </p>
       <p>
-        Points no longer convert into free service credits. A credit you already hold can still be used on a service of
-        £30 or more. We may change the points rules on reasonable notice.
+        Points no longer convert into free service credits. A free service credit or free task can be used on any task.
+        We may change the points rules on reasonable notice.
       </p>
 
       <h2>10. Payment, refunds and complaints</h2>
@@ -537,8 +537,9 @@ export function OfferTermsPage() {
 
       <h2>2. How to get it</h2>
       <p>
-        Join the waitlist, then create a SPIDXR app account using the <strong>same email address or mobile number</strong>{" "}
-        you joined with. Your gift is waiting in that account.
+        Join the waitlist, then create a SPIDXR app account using the <strong>same email address</strong> you joined
+        with. Your gift is waiting in that account. If you already have an account with that email, the gift is added when
+        you join.
       </p>
 
       <h2>3. The rules</h2>
