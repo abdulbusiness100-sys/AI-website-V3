@@ -318,7 +318,7 @@ export default function ComingSoonPage() {
             transition={{ duration: 0.9, delay: 0.5 }}
             style={{
               fontSize: "clamp(28px, 5.5vw, 58px)",
-              fontFamily: "Georgia, 'Playfair Display', 'Times New Roman', serif",
+              fontFamily: "'Space Grotesk', sans-serif",
               fontWeight: 700,
               fontStyle: "italic",
               color: "#FFFFFF",
