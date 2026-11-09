@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState, type FormEvent } from "react";
 import { Link } from "wouter";
 import appIconUrl from "@/assets/spidxr-app-icon.svg";
+import appIconDarkUrl from "@/assets/spidxr-app-icon-dark.svg";
 import { cleanEmail, cleanSource, EMAIL_ERROR, phoneError, toE164 } from "@/lib/waitlist";
 import { countryByIso, OTHER_COUNTRIES, TOP_COUNTRIES, type Country } from "@/lib/countries";
 import "./WaitlistPage.css";
@@ -138,9 +139,13 @@ export default function WaitlistPage() {
 
       <main className="wl-stage">
         <div className="wl-hero">
-          {/* Lock-up: the app icon (its own black tile, vector) beside the wordmark, one row. */}
+          {/* Lock-up: the app icon (vector) beside the wordmark, one row. The gold tile is THE icon; the black
+              tile is for dark mode only (Abdul, 9 Nov). */}
           <div className="wl-lockup wl-in" role="img" aria-label="SPIDXR">
-            <img className="wl-icon" src={appIconUrl} alt="" width={48} height={48} />
+            <picture>
+              <source srcSet={appIconDarkUrl} media="(prefers-color-scheme: dark)" />
+              <img className="wl-icon" src={appIconUrl} alt="" width={48} height={48} />
+            </picture>
             <span className="wl-wordmark" />
           </div>
           <h1 className="wl-title wl-in">Your personal concierge.</h1>
