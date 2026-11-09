@@ -194,7 +194,7 @@ html:has(.wl-root) body {
   display: block;
   width: calc(var(--wl-cap) / 0.45);
   height: calc(var(--wl-cap) / 0.45);
-  border-radius: 22.37%;
+  /* No border-radius: the SVG draws its own continuous (squircle) corners. */
 }
 .wl-wordmark {
   display: block;
