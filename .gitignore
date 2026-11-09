@@ -5,3 +5,8 @@ server/public
 vite.config.ts.*
 *.tar.gzextracted_source/
 attached_assets/dist_*.zip
+
+# secrets: never commit env files (Abdul standing rule)
+.env
+.env.*
+!.env.example
