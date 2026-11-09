@@ -1,9 +1,21 @@
 {
   "buildCommand": "npm run build",
   "outputDirectory": "dist/public",
+  "functions": {
+    "api/invite.ts": {
+      "includeFiles": "dist/public/index.html"
+    },
+    "api/og/invite.ts": {
+      "includeFiles": "{api/_assets/*.ttf,client/public/icon-512.png,client/src/assets/spidxr-wordmark.svg}"
+    }
+  },
   "rewrites": [
     {
-      "source": "/(.*)",
+      "source": "/r/:code",
+      "destination": "/api/invite?code=:code"
+    },
+    {
+      "source": "/((?!api/).*)",
       "destination": "/"
     }
   ],
