@@ -4,7 +4,7 @@ import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { ImageResponse } from "@vercel/og";
 import type { ReactElement } from "react";
-import { lookupInvite, normalCode, pounds, type Invite } from "../_invite.js";
+import { lookupInvite, normalCode, type Invite } from "../_invite.js";
 
 // Bundled with the function (vercel.json includeFiles). Space Grotesk only (Abdul, 5 Nov).
 const file = (path: string) => readFileSync(join(process.cwd(), path));
@@ -78,10 +78,7 @@ export function card(invite: Invite | null): El {
           ]
         : []),
       div({ width: 56, height: 2, marginTop: 30, backgroundColor: GOLD, opacity: 0.7 }),
-      div(
-        { fontSize: 25, fontWeight: 500, marginTop: 20, color: "#A39C90" },
-        invite ? `Your personal concierge · ${pounds(invite.points)} after your first task` : "Your personal concierge"
-      )
+      div({ fontSize: 25, fontWeight: 500, marginTop: 20, color: "#A39C90" }, "Your personal concierge")
     )
   );
 }

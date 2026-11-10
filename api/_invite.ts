@@ -5,8 +5,6 @@
 
 /** The same rule as the app (convex/paymentConfig.ts REFERRAL_ALPHABET, REFERRAL_CODE_LENGTH). */
 const CODE_RE = /^[23456789ABCDEFGHJKMNPQRSTUVWXYZ]{7}$/;
-/** convex/paymentConfig.ts PENCE_PER_POINT (1 point = 1p). The points themselves come from the server. */
-const PENCE_PER_POINT = 1;
 /** Production by default; a *.convex.site origin is public. Set SPIDXR_CONVEX_SITE_URL to point a preview at another deployment. */
 const CONVEX_SITE_URL = process.env.SPIDXR_CONVEX_SITE_URL || "https://valuable-condor-597.eu-west-1.convex.site";
 
@@ -32,13 +30,11 @@ export async function lookupInvite(code: string | null): Promise<Invite | null> 
   }
 }
 
-export const pounds = (points: number) => `£${((points * PENCE_PER_POINT) / 100).toFixed(2)}`;
-
 export function inviteCopy(invite: Invite | null) {
   return {
     title: invite?.firstName ? `${invite.firstName} invited you to SPIDXR` : "You're invited to SPIDXR",
     description: invite
-      ? `Your personal concierge. ${invite.points} points (${pounds(invite.points)}) waiting after your first task.`
+      ? `Your personal concierge. ${invite.points} points waiting after your first task.` // points only, no £ (Abdul, 10 Nov)
       : "Your personal concierge.",
   };
 }
