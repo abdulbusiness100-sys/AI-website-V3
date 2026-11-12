@@ -163,8 +163,8 @@ export default function WaitlistPage() {
               <h2 ref={doneRef} tabIndex={-1}>You&rsquo;re in.</h2>
               <p>When we open, you&rsquo;ll get the app before anyone else.</p>
               <p>
-                Your welcome gift: <strong>100 points and 1 free task</strong>, waiting when you join with the same email or
-                number.
+                Your starter pack: <strong>£15 SPIDXR credit and 250 points</strong>, waiting when you open your account with
+                the same email.
               </p>
             </div>
           ) : status === "closed" ? (
@@ -241,7 +241,7 @@ export default function WaitlistPage() {
                 <Link href="/offer-terms">Offer terms</Link>.
               </p>
               <p className="wl-legal">
-                We use your email and number only to add your welcome gift and, if you tick the box, to tell you when SPIDXR
+                We use your email and number only to add your starter pack and, if you tick the box, to tell you when SPIDXR
                 opens.
               </p>
             </form>
