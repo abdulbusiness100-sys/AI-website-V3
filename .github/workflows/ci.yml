@@ -1,0 +1,30 @@
+# CI for the website (tests and CI report, 12 Nov 2026): Vercel builds every PR and push, but its build never
+# type-checks and nothing ran the waitlist test. This runs both on every PR and push to main, and by hand.
+# Checks only: no secrets, no deploy (Vercel still deploys on its own).
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+# Read-only token (public repo: fork PRs must not get write access).
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run check
+      - run: npx tsx client/src/lib/waitlist.test.ts

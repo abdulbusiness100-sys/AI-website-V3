@@ -30,7 +30,8 @@ export type ChartConfig = {
 }
 
 interface ChartProps {
-  children: React.ReactNode;
+  // ResponsiveContainer takes exactly one chart element, not any ReactNode.
+  children: React.ReactElement;
   className?: string;
   config?: ChartConfig;
 }
@@ -99,7 +100,7 @@ export function ChartBar({ dataKey, dataset, name, label }: ChartBarProps) {
 }
 
 interface ChartLineProps {
-  type?: string;
+  type?: React.ComponentProps<typeof Line>["type"]; // a recharts curve name, e.g. "monotone"
   dataKey: string;
   dataset: any[];
   name: string;
