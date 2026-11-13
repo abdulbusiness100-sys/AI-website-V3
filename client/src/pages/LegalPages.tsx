@@ -3,7 +3,7 @@ import { Link } from "wouter";
 import { motion } from "framer-motion";
 
 // Shown on both pages. Update on every change to either document.
-const LAST_UPDATED = "5 November 2026";
+const LAST_UPDATED = "12 November 2026";
 const CONTACT = "support@spidxr.co.uk";
 
 // Privacy Policy, section 7 — mirrors RETENTION in the app backend (convex/retention.ts, 30 Sep 2026).
@@ -308,12 +308,12 @@ export function PrivacyPage() {
           used only to limit repeated sign-ups.
         </li>
         <li>
-          <strong>Why:</strong> to tell you when SPIDXR opens, and to add your welcome gift when you join the app with the
-          same email address.
+          <strong>Why:</strong> to tell you when SPIDXR opens, and to add your starter pack if you already have an app
+          account with the same email address.
         </li>
         <li>
           <strong>Lawful basis:</strong> consent, Art 6(1)(a), and PECR for launch messages by email or text: we send them
-          only if you ticked the box. Legitimate interests, Art 6(1)(f), for running the list, matching your welcome gift
+          only if you ticked the box. Legitimate interests, Art 6(1)(f), for running the list, matching your starter pack
           and preventing spam.
         </li>
         <li><strong>Where it is kept:</strong> in our database, Convex, hosted in the EU.</li>
@@ -445,7 +445,8 @@ export function TermsPage() {
         SPIDXR runner buys goods for you (for example on a grocery run), the goods you pay for count as well as our fee.
         At checkout <strong>100 points take £1 off</strong> (one point is worth 1p): you can use{" "}
         <strong>some or all of your points</strong> and pay the rest by card. Points are earned only on the part you do
-        not pay with points, so a task paid entirely with points, or with a free service credit, does not earn points.
+        not pay with points or SPIDXR credit, so a task paid entirely with points, SPIDXR credit or a free service credit
+        does not earn points.
       </p>
       <p>
         If you cancel a task you paid for partly or wholly with points, the points come back to your balance in the same
@@ -465,6 +466,15 @@ export function TermsPage() {
       <p>
         Points no longer convert into free service credits. A free service credit or free task can be used on any task.
         We may change the points rules on reasonable notice.
+      </p>
+      <p>
+        <strong>SPIDXR credit.</strong> Every new SPIDXR account gets a starter pack once: <strong>£15 of SPIDXR credit</strong>{" "}
+        and <strong>250 points</strong>. SPIDXR credit pays our service fee only, never shopping or other goods a runner
+        buys for you. At checkout it is used first, before points and card, unless you choose not to use it, and it can be
+        spent across several tasks until it runs out (a £6 fee uses £6 and leaves £9). It doesn&apos;t expire. It is a gift
+        from us: it has no cash value, can&apos;t be exchanged for cash or transferred, and goes if you delete your account.
+        If you cancel before your SPIDXR runner has set off, or SPIDXR is at fault, the credit used on that task comes back
+        to you; if you cancel later, it doesn&apos;t.
       </p>
 
       <h2>10. Payment, refunds and complaints</h2>
@@ -514,48 +524,56 @@ export function TermsPage() {
   );
 }
 
-// Welcome gift for people who join the website waitlist. DRAFT: needs Abdul + #compliance review. The list closes 30 Nov 2026; the gift never expires (Abdul, 5 Nov).
+// The waitlist offer: the starter pack (Abdul 12 Nov; it replaced the 5 Nov gift of 100 points + 1 free task). DRAFT: needs Abdul +
+// #compliance review. The list closes 30 Nov 2026; nothing in the pack expires. The app's server: SPIDXRAPP convex/credit.ts.
 export function OfferTermsPage() {
   return (
     <LegalShell title="Waitlist Offer Terms" active="offer">
       <p>
-        These terms explain the welcome gift for people who join the SPIDXR waitlist. They sit alongside our{" "}
+        These terms explain the starter pack for people who join the SPIDXR waitlist. They sit alongside our{" "}
         <Link href="/terms">Terms of Service</Link> and <Link href="/privacy">Privacy Policy</Link>.
       </p>
 
-      <h2>1. The welcome gift</h2>
+      <h2>1. The starter pack</h2>
       <ul>
         <li>
-          <strong>100 SPIDXR Points</strong>, added to your SPIDXR app account. Points work as described in section 9 of our{" "}
-          <Link href="/terms">Terms of Service</Link>.
+          <strong>£15 of SPIDXR credit</strong>, added to your SPIDXR app account. It pays our service fee only, never
+          shopping or other goods a runner buys for you, and it can be spent across several tasks until it runs out.
+          SPIDXR credit works as described in section 9 of our <Link href="/terms">Terms of Service</Link>.
         </li>
         <li>
-          <strong>1 free task.</strong> We waive the whole service price of one task. Anything a runner buys for you on
-          that task, such as shopping, is still paid by you.
+          <strong>250 SPIDXR Points</strong>, which work as described in the same section.
         </li>
       </ul>
 
       <h2>2. How to get it</h2>
       <p>
-        Join the waitlist, then create a SPIDXR app account using the <strong>same email address</strong> you joined
-        with. Your gift is waiting in that account. If you already have an account with that email, the gift is added when
-        you join.
+        Every new SPIDXR app account gets the starter pack once. If you <strong>already have an account</strong>, join the
+        waitlist with the <strong>same email address</strong> as that account and the starter pack is added when you join,
+        if you haven&apos;t had a starter pack or a waitlist welcome gift before.
       </p>
 
       <h2>3. The rules</h2>
       <ul>
-        <li>One welcome gift per person, however many times you join the list.</li>
-        <li>The gift has no cash value, can&apos;t be exchanged for cash and can&apos;t be transferred to anyone else.</li>
+        <li>One starter pack per person, however many times you join the list or open an account.</li>
         <li>
-          The waitlist closes at the end of <strong>30 November 2026</strong>. Your welcome gift doesn&apos;t expire: it
+          The starter pack has no cash value, can&apos;t be exchanged for cash and can&apos;t be transferred to anyone
+          else.
+        </li>
+        <li>
+          The waitlist closes at the end of <strong>30 November 2026</strong>. Your starter pack doesn&apos;t expire: it
           stays in your account until you use it.
+        </li>
+        <li>
+          If you were given the earlier welcome gift of points and a free task, you keep it, and it still doesn&apos;t
+          expire.
         </li>
       </ul>
 
       <h2>4. Changes to this offer</h2>
       <p>
-        We may end or change this offer with reasonable notice. That doesn&apos;t affect points or a free task already
-        added to your account.
+        We may end or change this offer with reasonable notice. That doesn&apos;t affect credit, points or a free task
+        already added to your account.
       </p>
 
       <h2>5. Who we are</h2>
