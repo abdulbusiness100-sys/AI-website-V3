@@ -223,7 +223,7 @@ export default function WaitlistPage() {
 
               <label className="wl-consent">
                 <input type="checkbox" name="consent" checked={consent} onChange={(e) => setConsent(e.target.checked)} />
-                <span>Tell me by email or text when SPIDXR opens.</span>
+                <span>Tell me by email when SPIDXR opens.</span>
               </label>
 
               {errors.form && (
