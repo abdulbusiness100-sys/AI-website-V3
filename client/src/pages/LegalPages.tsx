@@ -179,7 +179,7 @@ export function PrivacyPage() {
         head={["Data", "Why we hold it"]}
         rows={[
           ["Name, email address and phone number", "To create and manage your account and contact you about your requests"],
-          ["Your date of birth, which you give when you sign up", "To check you are 18 or over, and to check your age if you ask for alcohol, nicotine or vapes (see below)"],
+          ["Your date of birth, which you give when you sign up", "To check you are 13 or over, and that you are 18 or over before you can ask for alcohol, nicotine or vapes (see below)"],
           ["Your marketing choice", "To record whether you agreed to receive marketing"],
           ["Home building name and flat or unit number", "So your SPIDXR runner or skilled worker can reach you"],
           ["Your phone's location, only if you allow it", "To show you what's nearby and check whether you are inside our service area. It is optional: you can type an address instead"],
@@ -330,8 +330,10 @@ export function PrivacyPage() {
 
       <h2>9. Age of users</h2>
       <p>
-        SPIDXR is only for people aged <strong>18 or over</strong>. You give your date of birth when you sign up. We do
-        not knowingly collect data from under-18s.
+        SPIDXR is for people aged <strong>13 or over</strong>. You give your date of birth when you sign up, and you
+        can&apos;t sign up if you are under 13. We do not knowingly collect data from children under 13. If you are 13 to
+        17, you can use SPIDXR, but you can&apos;t ask for alcohol, nicotine or vapes: we use your date of birth to stop
+        those requests, and the runner checks ID at the door.
       </p>
 
       <h2>10. The website waitlist</h2>
@@ -385,7 +387,9 @@ export function TermsPage() {
 
       <h2>2. Who can use SPIDXR, and where</h2>
       <p>
-        You must be <strong>18 or over</strong> to use SPIDXR. You give your date of birth when you sign up.
+        You must be <strong>13 or over</strong> to use SPIDXR. You give your date of birth when you sign up, and you
+        can&apos;t sign up if you are under 13. If you are 13 to 17, you can use SPIDXR but can&apos;t ask for
+        age-restricted items (see section 6).
       </p>
       <p>
         Anyone can sign up, wherever they live. Our services are offered within a radius of about{" "}
@@ -483,7 +487,8 @@ export function TermsPage() {
         <strong>Alcohol, nicotine and vapes</strong> are age-restricted. We take requests for them only where our age
         checks are in place: your date of birth from sign-up, and an ID check at the door, where the runner checks the
         name and date of birth on the ID of the person receiving them (the runner does not photograph the ID).
-        Under-18s can&apos;t request them, and the runner may refuse to hand them over if that cannot be done lawfully.
+        If you are under 18, you can&apos;t request them, and the runner may refuse to hand them over if that cannot be
+        done lawfully.
       </p>
       <p>Some tasks happen only with your clear permission:</p>
       <ul>
