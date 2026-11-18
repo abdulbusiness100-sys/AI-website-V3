@@ -346,7 +346,8 @@ export function PrivacyPage() {
         </li>
         <li>
           <strong>Why:</strong> to tell you when SPIDXR opens, and to add your starter pack if you already have an app
-          account with the same email address.
+          account with the same email address. We use your mobile number only to spot duplicate sign-ups and to stop fake
+          or spam sign-ups. We don&apos;t text you.
         </li>
         <li>
           <strong>Lawful basis:</strong> consent, Art 6(1)(a), and PECR for launch emails: we send them
@@ -363,8 +364,8 @@ export function PrivacyPage() {
           the list.
         </li>
         <li>
-          <strong>Unsubscribe any time</strong> using the link in any email we send, or by emailing <Mail />. We then
-          keep only a scrambled (hashed) copy of your email and number, so we never message you again.
+          <strong>Unsubscribe any time</strong> using the link in any email we send, or by emailing <Mail />. Within a
+          day, we then keep only a scrambled (hashed) copy of your email and number, so we never message you again.
         </li>
       </ul>
 
