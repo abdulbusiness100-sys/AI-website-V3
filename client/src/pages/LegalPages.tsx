@@ -349,18 +349,21 @@ export function PrivacyPage() {
           account with the same email address.
         </li>
         <li>
-          <strong>Lawful basis:</strong> consent, Art 6(1)(a), and PECR for launch messages by email or text: we send them
+          <strong>Lawful basis:</strong> consent, Art 6(1)(a), and PECR for launch emails: we send them
           only if you ticked the box. Legitimate interests, Art 6(1)(f), for running the list, matching your starter pack
           and preventing spam.
         </li>
         <li><strong>Where it is kept:</strong> in our database, Convex, hosted in the EU.</li>
-        <li><strong>Who sends our messages:</strong> our email and text provider, [PROVIDER — to be confirmed].</li>
+        <li>
+          <strong>Who sends our emails:</strong> we send them through SPIDXR&apos;s own Google Workspace email, from
+          hello@spidxr.co.uk.
+        </li>
         <li>
           <strong>How long:</strong> if you never join the app, we delete your waitlist details 12 months after you joined
           the list.
         </li>
         <li>
-          <strong>Unsubscribe any time</strong> using the link in any message we send, or by emailing <Mail />. We then
+          <strong>Unsubscribe any time</strong> using the link in any email we send, or by emailing <Mail />. We then
           keep only a scrambled (hashed) copy of your email and number, so we never message you again.
         </li>
       </ul>
