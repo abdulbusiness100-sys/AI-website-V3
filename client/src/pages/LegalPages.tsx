@@ -3,19 +3,20 @@ import { Link } from "wouter";
 import { motion } from "framer-motion";
 
 // Shown on both pages. Update on every change to either document.
-const LAST_UPDATED = "12 November 2026";
+const LAST_UPDATED = "19 November 2026";
 const CONTACT = "support@spidxr.co.uk";
 
 // Privacy Policy, section 7 — mirrors RETENTION in the app backend (convex/retention.ts, 30 Sep 2026).
-// Change a period there and here together.
+// Change a period there and here together. The two chat rows are Abdul and Kevin's 17–18 Nov decision (90 days, or the
+// account's deletion if sooner); retention.ts needs the same period when the AI chat is stored on the server.
 const RETENTION: [string, string][] = [
-  ["Account profile (name, contact details, building and flat)", "Until you delete your account"],
+  ["Account profile (name, date of birth, contact details, building and flat)", "Until you delete your account"],
   ["Request history and task details", "6 years from the end of the financial year the task took place in (HMRC and contract-claim time limits). If you delete your account, completed tasks are kept in anonymised form"],
   ["Payment and transaction records", "6 years from the end of the financial year the task took place in (HMRC). Card payment records are also held by Stripe under its own policy"],
   ["Collection codes for parcel pickups", "Deleted within a day of the task being delivered, completed or cancelled"],
-  ["AI chat transcripts", "Not stored by SPIDXR. Your conversation is sent to our AI providers to answer you and is kept on your device only for the current session"],
-  ["AI preference profile", "Until you delete your account, or sooner if you ask us to delete it"],
-  ["Messages between you and your runner", "90 days after the task ends"],
+  ["AI chats, and chats with the SPIDXR team", "90 days, or until you delete your account if that is sooner"],
+  ["AI memory (details the assistant remembers from past chats)", "Until you delete your account, or sooner if you ask us to delete it. If you ask the assistant to forget something, we delete it within one month"],
+  ["Messages between you and your SPIDXR runner or skilled worker", "90 days after the task ends, or until you delete your account if that is sooner"],
   ["Proof-of-delivery and task photos", "180 days after the task ends"],
   ["In-app notifications", "90 days after they are sent"],
   ["Runner location during a task", "48 hours after the task ends"],
@@ -158,8 +159,8 @@ export function PrivacyPage() {
       <h2>1. Who we are</h2>
       <p>
         SPIDXR ("SPIDXR", "we", "us") is the trading name of <strong>SPIDXR Vitality Innovations Ltd</strong>, which
-        operates the SPIDXR app: an AI-assisted concierge and errands service for residents of participating buildings.
-        We are the <strong>data controller</strong> for the personal data described in this policy.
+        operates the SPIDXR app: an AI-assisted concierge and errands service, offered in and around Greengate,
+        Salford (M3 7). We are the <strong>data controller</strong> for the personal data described in this policy.
       </p>
       <ul>
         <li>Company: SPIDXR Vitality Innovations Ltd, company number 16118329</li>
@@ -178,24 +179,31 @@ export function PrivacyPage() {
         head={["Data", "Why we hold it"]}
         rows={[
           ["Name, email address and phone number", "To create and manage your account and contact you about your requests"],
-          ["Your confirmation that you are 18 or over, and your marketing choice", "To record your age confirmation and whether you agreed to receive marketing"],
-          ["Home building name and flat or unit number", "So a runner can reach you"],
+          ["Your date of birth, which you give when you sign up", "To check you are 18 or over, and to check your age if you ask for alcohol, nicotine or vapes (see below)"],
+          ["Your marketing choice", "To record whether you agreed to receive marketing"],
+          ["Home building name and flat or unit number", "So your SPIDXR runner or skilled worker can reach you"],
+          ["Your phone's location, only if you allow it", "To show you what's nearby and check whether you are inside our service area. It is optional: you can type an address instead"],
           ["Pickup and drop-off locations for a task", "To fulfil and route your request"],
+          ["The name, door number and building of someone you book a task for or send something to", "So the runner or skilled worker can find and hand over to the right person"],
           ["Collection codes you give us for a parcel pickup", "So the runner assigned to your task can collect your parcel. Only that runner can see the code, at pickup."],
-          ["The content of your requests, including AI chat and voice messages", "To understand and fulfil what you ask for"],
-          ["An AI-generated summary of your preferences", "To personalise the service (see section 3)"],
-          ["Messages between you and your runner", "To coordinate the task"],
+          ["The content of your requests, including AI chat and voice messages", "To understand and fulfil what you ask for, and so our team can help you"],
+          ["Details the AI assistant remembers from your past chats", "To personalise the service (see section 3)"],
+          ["Messages between you and your SPIDXR runner or skilled worker, and between you and the SPIDXR team", "To coordinate the task and help you"],
           ["Photos taken by the runner at pickup and delivery", "Delivery evidence and dispute resolution"],
-          ["Payment information", "We use Stripe to take payments. Your card details are handled by Stripe and never stored on our systems. During the current pilot, requests are confirmed without charge and Stripe runs in test mode."],
+          ["Payment information", "We use Stripe to take payments. Your card details are handled by Stripe and never stored on our systems."],
           ["Device push token", "To send you updates about your requests"],
         ]}
       />
       <p>
-        <strong>Health information.</strong> None of the services offered in the current beta need any information about
-        your health, and we do not ask for it. Please don't include health details in your messages. If we introduce a
-        service where health information is unavoidable (for example, collecting a named prescription for you), we will
-        ask for your explicit consent before processing it, under Article 9(2)(a) UK GDPR, and update this policy. You
-        will be able to decline, and to withdraw that consent at any time.
+        <strong>Age checks at the door.</strong> If you ask for alcohol, nicotine or vapes, the runner checks the name and
+        date of birth on the ID of the person receiving them. The runner does not photograph the ID or keep a copy.
+      </p>
+      <p>
+        <strong>Health information.</strong> Some services can involve information about your health, for example
+        collecting a prescription for you, or a health home visit by a skilled worker. We use it only to carry out that
+        task, and the AI assistant does not remember health details from one chat to the next. Please don't share more
+        health detail than the task needs. We ask for your explicit consent before we process health information, under
+        Article 9(2)(a) UK GDPR. You can decline, and you can withdraw that consent at any time.
       </p>
 
       <h2>3. Using an AI assistant: what you should know</h2>
@@ -208,17 +216,34 @@ export function PrivacyPage() {
         </li>
         <li>Your inputs are not used to train these providers' AI models by default.</li>
         <li>
+          <strong>Your consent.</strong> Before your first chat, the app asks you to agree to your messages and voice
+          being processed by these AI providers, and our <Link href="/terms">Terms of Service</Link> say the same. You can
+          turn this off at any time in the app&apos;s Settings.
+        </li>
+        <li>
+          <strong>Who can see your chats.</strong> SPIDXR&apos;s admin team (currently two people) can see your
+          conversations in the app: your chats with the AI assistant, with the SPIDXR team, and with your SPIDXR runner or
+          skilled worker. They use them only to run the service: to help you, to step in when the assistant can&apos;t
+          sort something out, and to handle complaints. Chats are kept for 90 days, or until you delete your account if
+          that is sooner (see section 7).
+        </li>
+        <li>
           <strong>Help improve SPIDXR</strong> is off unless you switch it on in the app&apos;s Settings. If you switch it on,
           we may use your conversations, with names, flat numbers and codes removed, to improve how SPIDXR understands
           and helps residents. You can switch it off at any time, and we then stop using your new conversations.
         </li>
         <li>
-          The assistant keeps a short profile of your preferences (such as preferred stores, usual services, building
-          access notes and timing preferences) to personalise the service. It is designed not to store door codes, PINs
-          or card numbers. This profile is not used to make any decision that has a legal or similarly significant effect
-          on you. You can ask us to show you or delete it at any time, and it is deleted when you delete your account.
+          <strong>What the assistant remembers.</strong> The assistant remembers details from your past chats (such as
+          preferred stores, usual services, building access notes and timing preferences) to personalise the service.
+          It does not remember health details, and it is designed not to store door codes, PINs or card numbers. You can
+          ask the assistant to forget something, and we do it within one month. This memory is not used to make any
+          decision that has a legal or similarly significant effect on you. You can ask us to show you or delete it at
+          any time, and it is deleted when you delete your account.
         </li>
-        <li>The assistant helps you set up a request, but prices are always calculated by our system, not by the AI.</li>
+        <li>
+          The assistant helps you set up a request, but prices are always calculated by our system, not by the AI.
+          Partner requests are priced by our concierge partner.
+        </li>
       </ul>
 
       <h2>4. Why we use your data and our lawful basis</h2>
@@ -227,9 +252,13 @@ export function PrivacyPage() {
         rows={[
           ["Creating your account and providing the service", "Performance of a contract, Art 6(1)(b)"],
           ["Fulfilling and routing your requests, including locations", "Performance of a contract, Art 6(1)(b)"],
+          ["Sending your chat and voice messages to our AI providers", "Consent, Art 6(1)(a), which you give in the app before your first chat"],
+          ["Using your phone's location to show what's nearby and check our service area", "Consent, Art 6(1)(a): only if you allow it on your phone"],
+          ["Checking your date of birth, and ID at the door for age-restricted items", "Performance of a contract, Art 6(1)(b), and legal obligation, Art 6(1)(c)"],
+          ["Our team reading chats to help you and handle complaints", "Legitimate interests, Art 6(1)(f)"],
           ["Proof-of-delivery photos, safety and quality logging, dispute resolution", "Legitimate interests, Art 6(1)(f)"],
-          ["Personalising the service (AI preference profile)", "Legitimate interests, Art 6(1)(f)"],
-          ["Health information, only if a future service unavoidably needs it", "Explicit consent, Art 9(2)(a)"],
+          ["Personalising the service (AI memory)", "Legitimate interests, Art 6(1)(f)"],
+          ["Health information, only where a task needs it", "Explicit consent, Art 9(2)(a)"],
           ["Keeping payment and transaction records", "Contract, Art 6(1)(b), and legal obligation, Art 6(1)(c)"],
           ["Sending you optional marketing (deals and updates)", "Consent, Art 6(1)(a), and PECR"],
         ]}
@@ -240,15 +269,21 @@ export function PrivacyPage() {
       </p>
 
       <h2>5. Who we share your data with</h2>
+      <p>
+        When you book a <strong>Skilled</strong> service, the skilled worker who takes the job sees what they need to do
+        it: your name, the address, the task details and your messages with them. When you make a{" "}
+        <strong>Partner</strong> request, our team passes your request and contact details to our concierge partner so
+        it can price the request and invoice you.
+      </p>
       <p>We use trusted service providers who act on our instructions under a data processing agreement:</p>
       <ul>
         <li><strong>Supabase</strong>: sign-in and photo storage (UK, London)</li>
         <li><strong>Convex</strong>: our app database (EU)</li>
         <li><strong>Anthropic</strong>: AI chat (US)</li>
         <li><strong>OpenAI</strong>: voice transcription and spoken replies (US)</li>
-        <li><strong>Stripe</strong>: payment processing (US and global); test mode during the pilot</li>
+        <li><strong>Stripe</strong>: payment processing, and paying skilled workers through their own Stripe accounts (US and global)</li>
         <li><strong>Expo</strong>: push notifications (US)</li>
-        <li><strong>Apple</strong>: push notification delivery to your iPhone, and map display and place look-ups in the iPhone app (US)</li>
+        <li><strong>Apple</strong>: push notification delivery to your iPhone, and map display and place look-ups (Apple Maps) in the iPhone app (US)</li>
         <li><strong>Vercel</strong>: website and operations portal hosting (US)</li>
         <li><strong>Sentry</strong>: crash and error reporting (US)</li>
       </ul>
@@ -281,7 +316,7 @@ export function PrivacyPage() {
       <ul>
         <li>
           You can <strong>delete your account</strong> yourself in the app's account settings, once any task in progress
-          has finished. This deletes your profile, AI preference profile, messages, request history and stored photos,
+          has finished. This deletes your profile, AI memory, chats, messages, request history and stored photos,
           and your customer record with Stripe. Where a runner has completed a task for you, that task record and its
           delivery photos are kept in anonymised form, with your details removed, as a record of the runner's work.
         </li>
@@ -295,8 +330,8 @@ export function PrivacyPage() {
 
       <h2>9. Age of users</h2>
       <p>
-        SPIDXR is only for people aged <strong>18 or over</strong>. You must confirm you are 18 or over when you sign up.
-        We do not knowingly collect data from under-18s.
+        SPIDXR is only for people aged <strong>18 or over</strong>. You give your date of birth when you sign up. We do
+        not knowingly collect data from under-18s.
       </p>
 
       <h2>10. The website waitlist</h2>
@@ -348,79 +383,137 @@ export function TermsPage() {
         Terms and to our <Link href="/privacy">Privacy Policy</Link>.
       </p>
 
-      <h2>2. Who can use SPIDXR</h2>
+      <h2>2. Who can use SPIDXR, and where</h2>
       <p>
-        You must be <strong>18 or over</strong> and live in a participating building in our current service area (the M3
-        7 postcode area of Manchester) to use SPIDXR. By signing up you confirm you are at least 18.
+        You must be <strong>18 or over</strong> to use SPIDXR. You give your date of birth when you sign up.
+      </p>
+      <p>
+        Anyone can sign up, wherever they live. Our services are offered within a radius of about{" "}
+        <strong>607 metres around Greengate, Salford (M3 7)</strong>. Outside that area, General services aren&apos;t
+        available yet, Partner requests still work, and Skilled services are available only where a skilled worker
+        covers your area.
+      </p>
+      <p>
+        Sharing your phone&apos;s location is optional. We use it to show you what&apos;s nearby and to check whether you
+        are inside our service area. You can type an address instead.
       </p>
 
       <h2>3. The service</h2>
       <p>
-        SPIDXR is a concierge and errands service. You make a request through our AI assistant, and a SPIDXR runner
-        fulfils it. The AI assistant is <strong>an automated system, not a human</strong>. Prices mentioned by the AI are
-        indicative; the <strong>final price is calculated by our system</strong> and shown to you before you confirm.
+        SPIDXR is a concierge and errands service. The <strong>A&ndash;Z Marketplace</strong> in the app lists every
+        service we offer. Each service is carried out in one of three ways:
       </p>
-      <p>These services are available during the beta:</p>
-      <Table
-        head={["Service", "What we do", "Price"]}
-        rows={[
-          ["Parcel Return", "Collect a parcel you're sending back from your door and drop it off for return", "£4.99"],
-          ["Parcel Collection", "Collect a parcel waiting for you at a locker, post office or collection point and bring it to your door", "£7.99"],
-          ["Local Item Drop", "Bring an order you've already placed (for example a takeaway or courier delivery) from your building's lobby to your door", "£9.99"],
-          ["Garbage Collection", "Take your rubbish from your door to your building's disposal point", "£2.99"],
-        ]}
-      />
-      <p>
-        We only accept requests for services that are currently active. Other services mentioned in the app or on our
-        website are not available during the beta. Runner capacity is limited during the beta, so a request may wait in the
-        queue until a runner is available to accept it.
-      </p>
-
-      <h2>4. Placing a request and pricing</h2>
       <ul>
         <li>
-          Each request has a fixed price (see section 3). Some tasks carry a fixed surcharge, for example £2 for
-          collecting a parcel from an approved collection point outside your building. Any surcharge is itemised before
-          you confirm.
+          <strong>General</strong>: done by SPIDXR&apos;s own runners.
         </li>
         <li>
-          During the current pilot, requests are confirmed <strong>without charge</strong> (shown at checkout as "Pilot:
-          no charge"). When card payments begin, payment will be taken through <strong>Stripe</strong> when you confirm a
-          request. Card details are handled by Stripe and never stored by SPIDXR.
+          <strong>Skilled</strong>: done by independent skilled workers who sign up on SPIDXR. Before a skilled worker can
+          take jobs, they must pass the checks the law requires for that service and be approved by SPIDXR. They are paid
+          through their own Stripe account.
+        </li>
+        <li>
+          <strong>Partner</strong>: luxury requests, which a member of the SPIDXR team passes to our concierge partner.
+          The partner prices the request and invoices you for it.
+        </li>
+      </ul>
+      <p>
+        Health, childcare and vet home visits are Skilled services. You can book them once a qualified skilled worker
+        covers your area; until then, the assistant will tell you that nobody in your area can provide that task.
+      </p>
+      <p>
+        We don&apos;t offer: digital services; building maintenance (such as electrics, gas, plumbing, heating or
+        roofing); elderly or respite care; or house-and-garden work.
+      </p>
+
+      <h2>4. Booking a task and pricing</h2>
+      <ul>
+        <li>
+          Every request goes through the SPIDXR AI assistant in the app. The assistant is{" "}
+          <strong>an automated system, not a human</strong>. It asks what you need, who it is for, where and when, then
+          shows you a summary and a <strong>confirmation card</strong> with the price and the estimated time.
+        </li>
+        <li>
+          If the assistant still can&apos;t work out what you need after up to 10 questions, a member of the SPIDXR team
+          joins the same chat to help.
+        </li>
+        <li>
+          The assistant handles one request at a time. You can book up to <strong>7 days ahead</strong>, and SPIDXR runs
+          24 hours a day, 7 days a week.
+        </li>
+        <li>
+          You can book a task for someone else, such as a partner, flatmate, relative or friend. The same checks apply. We
+          can deliver to another address inside our service area if you give the recipient&apos;s name, door number and
+          building.
+        </li>
+        <li>
+          Prices are calculated by our system, not by the AI.{" "}
+          <strong>The price on the confirmation card is fixed:</strong> you pay nothing extra if the task takes longer
+          than estimated, and you get nothing back if it is quicker.
+        </li>
+        <li>
+          For Skilled services, the price is the skilled worker&apos;s own price plus SPIDXR&apos;s fee, shown as one total.
+        </li>
+        <li>No VAT is charged on our prices.</li>
+        <li>
+          You pay when you confirm, through <strong>Stripe</strong>. Card details are handled by Stripe and never stored
+          by SPIDXR. For Skilled services, you pay before a skilled worker accepts the job. A skilled worker has no time
+          limit to accept, and if one declines, the job waits for the next.
+        </li>
+        <li>
+          Partner requests are priced and invoiced by our concierge partner, not through a confirmation card.
         </li>
       </ul>
 
       <h2>5. Buying goods</h2>
       <p>
-        In the current beta, SPIDXR does not buy goods on your behalf. Our services move items you already have or have
-        already ordered. We will update these Terms before we offer any service that involves buying goods for you.
+        Some tasks involve your SPIDXR runner buying things for you, such as food, groceries or over-the-counter medicine.
+        The goods are not part of our fixed service price: you pay for them as well.
+      </p>
+      <p>
+        Pharmacy collection is collection only. The prescription must already be paid for, or free.
       </p>
 
-      <h2>6. Prohibited and age-restricted items</h2>
+      <h2>6. What we won&apos;t carry, age checks, and tasks that need your permission</h2>
       <p>
-        We cannot handle items that are unlawful, dangerous, or that we cannot carry safely. If an order you have already
-        placed contains age-restricted items (for example alcohol), our runner may ask for proof of age at handover and
-        may refuse to hand it over if that cannot be done lawfully. We may refuse or cancel any request that cannot be
-        fulfilled lawfully or safely.
+        We always refuse illicit drugs and weapons. We cannot handle anything else that is unlawful, dangerous, or that we
+        cannot carry safely, and we may refuse or cancel any request that cannot be fulfilled lawfully or safely.
       </p>
+      <p>
+        <strong>Alcohol, nicotine and vapes</strong> are age-restricted. We take requests for them only where our age
+        checks are in place: your date of birth from sign-up, and an ID check at the door, where the runner checks the
+        name and date of birth on the ID of the person receiving them (the runner does not photograph the ID).
+        Under-18s can&apos;t request them, and the runner may refuse to hand them over if that cannot be done lawfully.
+      </p>
+      <p>Some tasks happen only with your clear permission:</p>
+      <ul>
+        <li>
+          <strong>Going into your home while you are out</strong>: only with your clear permission, which the assistant
+          asks you for.
+        </li>
+        <li>
+          <strong>Handing over keys</strong> and <strong>driving your car</strong>: only with your consent.
+        </li>
+      </ul>
 
       <h2>7. Your right to cancel (Consumer Contracts Regulations 2013)</h2>
       <p>
         You normally have a <strong>14-day cancellation right</strong> for services bought at a distance. Because you are
-        asking us to start fulfilling your request straight away,{" "}
+        asking us to carry out your request straight away or at the time you book (up to 7 days ahead),{" "}
         <strong>
-          by confirming a request you expressly ask us to begin the service immediately and acknowledge that you lose the
-          right to cancel once the service has been fully performed.
+          by confirming a request you expressly ask us to begin the service within the cancellation period and
+          acknowledge that you lose the right to cancel once the service has been fully performed.
         </strong>
       </p>
       <p>
-        If you cancel after confirming, you pay a share of the request price that reflects how far your SPIDXR runner had
-        progressed with the task. This is our proportionate cancellation ladder:
+        You cancel a task on its screen in the app. What you pay depends on two things: the stage the task has reached
+        (the ladder below) and the time already worked on it. SPIDXR keeps whichever of the two is higher and refunds the
+        rest.
       </p>
       <Table
-        head={["Stage", "When you cancel", "You pay"]}
+        head={["Stage", "When you cancel", "Stage share"]}
         rows={[
-          ["C0", "A runner has accepted but not yet started", "0%"],
+          ["C0", "Nobody has started yet (including while your request waits for a runner or skilled worker to accept it)", "0%"],
           ["C1", "The runner is on their way to collect", "25%"],
           ["C2", "Collection or custody of your item has begun", "50%"],
           ["C3", "Your item is in transit", "75%"],
@@ -428,9 +521,8 @@ export function TermsPage() {
         ]}
       />
       <p>
-        Where <strong>SPIDXR is at fault</strong> (for example, we cannot fulfil the request), you are not charged under
-        this ladder and you receive a full refund of anything you have paid. While the pilot is free, no cancellation
-        charge is taken.
+        Where <strong>SPIDXR is at fault</strong> (for example, we cannot fulfil the request), you are not charged and
+        you receive a full refund of anything you have paid.
       </p>
 
       <h2>8. Our service standard (Consumer Rights Act 2015)</h2>
@@ -477,11 +569,14 @@ export function TermsPage() {
         to you; if you cancel later, it doesn&apos;t.
       </p>
 
-      <h2>10. Payment, refunds and complaints</h2>
+      <h2>10. Payment, refunds, help and complaints</h2>
       <ul>
-        <li>Once card payments begin, the price of a request is payable when you confirm it.</li>
+        <li>The price of a request is payable when you confirm it (see section 4).</li>
         <li>Refunds are handled under sections 7 and 8.</li>
-        <li>To complain, contact <Mail />.</li>
+        <li>
+          For help or to complain, tell the AI assistant in the app. It tries to sort it out first. If it can&apos;t, a
+          member of the SPIDXR team joins the same chat. You can also email <Mail />.
+        </li>
       </ul>
 
       <h2>11. Acceptable use</h2>
@@ -505,8 +600,14 @@ export function TermsPage() {
 
       <h2>14. Privacy</h2>
       <p>
-        How we handle your data is explained in our <Link href="/privacy">Privacy Policy</Link>. Using the AI assistant
-        means some of your messages and voice are processed by third-party AI providers, as described there.
+        How we handle your data is explained in our <Link href="/privacy">Privacy Policy</Link>.
+      </p>
+      <p>
+        Every request goes through the AI assistant, so using SPIDXR means your messages and voice are processed by our
+        AI providers, <strong>Anthropic</strong> (Claude) and <strong>OpenAI</strong>, as described in the Privacy Policy.
+        By accepting these Terms you agree to that, and the app also asks you before your first chat. You can turn it off
+        at any time in the app&apos;s Settings. SPIDXR&apos;s admin team can see your chats in the app to run the
+        service, and chats are kept for 90 days, or until you delete your account if that is sooner.
       </p>
 
       <h2>15. Changes and termination</h2>
